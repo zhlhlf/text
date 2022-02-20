@@ -19,8 +19,7 @@ jobs:
       run: |
         git clone https://github.com/ReFirmLabs/binwalk
         cd binwalk
-        wget http://opt.cn2qq.com/padavan/RT-AC1200HP-GPIO-12-JI3-128M_3.4.3.9-099.trx
-        python .\setup.py install
+        wget https://github.com/zhlhlf/text/blob/main/RT-AC1200HP-GPIO-12-JI3-128M_3.4.3.9-099.trx
 
     - name: ssh连接
       if: env.ssh == 'true'            
