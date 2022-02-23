@@ -1,31 +1,42 @@
-name: Build OpenWrt
+name: Action
 
-on: 
+on:
   watch:
     types: [started]
-    
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+   
 env:
-  ssh: true
+  ssh: true66
+  WeTransfer: true
+
+
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+      runs-on: ubuntu-20.04
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-       
-    - name: 获取源码&替换config
-      run: |
-        git clone https://github.com/ReFirmLabs/binwalk
-        cd binwalk
-        wget https://github.com/zhlhlf/text/blob/main/RT-AC1200HP-GPIO-12-JI3-128M_3.4.3.9-099.trx
+      steps:
+        - name: 获取本仓库源码
+          uses: actions/checkout@main
+  
+        - name: 清理环境
+          run: |
+             git clone https://github.com/hanwckf/rt-n56u 
+             zip rt-n56u/trunk/configs 666.zip
 
-    - name: ssh连接
-      if: env.ssh == 'true'            
-      uses: P3TERX/ssh2actions@v1.0.0
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}      
-              
-      
+        - name: ssh连接
+          if: env.ssh == 'true'            
+          uses: P3TERX/ssh2actions@v1.0.0
+          env:
+            TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+            TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}      
+                              
+        - name: 上传zhlhlf目录所有文件至WeTransfer
+          if: env.WeTransfer == 'true'            
+          run: |
+             sudo ./transfer wet 666.zip
+
+
