@@ -25,7 +25,7 @@ jobs:
         - name: 清理环境
           run: |
              git clone https://github.com/hanwckf/rt-n56u 
-             zip rt-n56u/trunk/configs 666.zip
+             zip 666.zip rt-n56u/trunk/configs
 
         - name: ssh连接
           if: env.ssh == 'true'            
