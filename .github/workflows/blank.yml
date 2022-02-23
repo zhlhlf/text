@@ -34,9 +34,7 @@ jobs:
             TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
             TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}      
                               
-        - name: 上传zhlhlf目录所有文件至WeTransfer
+        - name: 上传至WeTransfer
           if: env.WeTransfer == 'true'            
           run: |
              sudo ./transfer wet 666.zip
-
-
