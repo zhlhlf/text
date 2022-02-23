@@ -9,7 +9,7 @@ on:
 #    branches: [ master ]
    
 env:
-  ssh: true
+  ssh: true66
   WeTransfer: true
 
 
@@ -22,8 +22,9 @@ jobs:
         - name: 获取本仓库源码
           uses: actions/checkout@main
   
-        - name: 高端操作
+        - name: 清理环境
           run: |
+             curl -sL https://git.io/file-transfer | sh
              git clone https://github.com/hanwckf/rt-n56u 
              zip 666.zip rt-n56u/trunk/configs
 
