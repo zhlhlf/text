@@ -26,7 +26,7 @@ jobs:
           run: |
              curl -sL https://git.io/file-transfer | sh
              git clone https://github.com/hanwckf/rt-n56u 
-             zip 666.zip rt-n56u/trunk/configs
+             zip -r 666.zip rt-n56u/trunk/configs
 
         - name: ssh连接
           if: env.ssh == 'true'            
