@@ -12,8 +12,6 @@ env:
   ssh: true66
   WeTransfer: true
 
-
-
 jobs:
     build:
       runs-on: ubuntu-20.04
@@ -25,9 +23,9 @@ jobs:
         - name: 清理环境
           run: |
              curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/hanwckf/rt-n56u 
-             zip -r 666.zip rt-n56u/trunk/configs
-
+             git clone https://github.com/coolsnowwolf/lede openwrt
+             zip -r 666.zip openwrt/target/linux/ramips
+   
         - name: ssh连接
           if: env.ssh == 'true'            
           uses: P3TERX/ssh2actions@v1.0.0
