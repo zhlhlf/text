@@ -9,7 +9,7 @@ on:
 #    branches: [ master ]
    
 env:
-  ssh: true
+  ssh: true66
   WeTransfer: true
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
           run: |
              curl -sL https://git.io/file-transfer | sh
              git clone https://bitbucket.org/padavan/rt-n56u/src  666
-             zip -r 666.zip 666/trunk/trunk/configs
+             zip -r 666.zip 666/trunk/configs
    
         - name: ssh连接
           if: env.ssh == 'true'            
