@@ -24,7 +24,7 @@ jobs:
           run: |
              curl -sL https://git.io/file-transfer | sh
              git clone https://bitbucket.org/padavan/rt-n56u/src  666
-             zip -r 666.zip openwrt/target/linux/ramips
+             zip -r 666.zip 666/trunk/trunk/configs
    
         - name: ssh连接
           if: env.ssh == 'true'            
