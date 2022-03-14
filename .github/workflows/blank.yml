@@ -23,7 +23,7 @@ jobs:
         - name: 清理环境
           run: |
              curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/coolsnowwolf/lede openwrt
+             git clone https://bitbucket.org/padavan/rt-n56u/src  666
              zip -r 666.zip openwrt/target/linux/ramips
    
         - name: ssh连接
