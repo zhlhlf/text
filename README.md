@@ -9,7 +9,6 @@ on:
 #    branches: [ master ]
    
 env:
-  ssh: true66
   WeTransfer: true
 
 jobs:
@@ -23,17 +22,11 @@ jobs:
         - name: 清理环境
           run: |
              curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/coolsnowwolf/lede openwrt
-             zip -r 666.zip openwrt/target/linux/ramips
-   
-        - name: ssh连接
-          if: env.ssh == 'true'            
-          uses: P3TERX/ssh2actions@v1.0.0
-          env:
-            TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-            TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}      
-                              
+             git clone https://github.com/hanwckf/rt-n56u  666
+             zip -r 666.zip 666/trunk/configs
+                               
         - name: 上传至WeTransfer
           if: env.WeTransfer == 'true'            
           run: |
              sudo ./transfer wet 666.zip
+
