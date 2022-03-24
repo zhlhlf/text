@@ -25,7 +25,7 @@ jobs:
              git clone https://github.com/zhlhlf/jczhl-package
              mkdir 666
              mv jczhl-package/HC5861 666
-             cp jczhl-package/HC5861/board.h board.h
+             cp 666/HC5861/board.h board.h
              ls   
              ls 666     
              
