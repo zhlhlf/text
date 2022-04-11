@@ -23,7 +23,7 @@ jobs:
         - name: 清理环境
           run: |
              curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/hanwckf/rt-n56u 666
+             git clone https://github.com/andy-padavan/rt-n56u 666
              zip -r 666.zip 666/trunk/configs
                                
         - name: 上传至WeTransfer
