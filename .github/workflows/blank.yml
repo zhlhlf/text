@@ -1,20 +1,32 @@
-name: Build
 
-on: 
+name: Action
+
+on:
   watch:
     types: [started]
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+   
+env:
+  WeTransfer: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-    - name: Build
-      run: |
-        ./gradlew assembleDebug
-    - name: Store generated APK file
-      uses: actions/upload-artifact@v2
-      with:
-        name: termux-app
-        path: ./app/build/outputs/apk/debug
+    build:
+      runs-on: ubuntu-20.04
+
+      steps:
+        - name: 获取本仓库源码
+          uses: actions/checkout@main
+  
+        - name: 清理环境
+          run: |
+             curl -sL https://git.io/file-transfer | sh
+             git clone https://github.com/chongshengB/rt-n56u 666
+             zip -r 666.zip 666/trunk/tools
+                               
+        - name: 上传至WeTransfer
+          if: env.WeTransfer == 'true'            
+          run: |
+             sudo ./transfer wet 666.zip
