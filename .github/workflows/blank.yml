@@ -23,10 +23,6 @@ jobs:
           run: |
              curl -sL https://git.io/file-transfer | sh
              git clone https://github.com/coolsnowwolf/lede openwrt
-             cd openwrt 
-             ./scripts/feeds update -a
-             ./scripts/feeds install -a
-             cd ../
              zip -r 666.zip openwrt
    
         - name: 上传至WeTransfer
