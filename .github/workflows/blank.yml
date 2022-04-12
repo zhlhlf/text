@@ -9,7 +9,15 @@ on:
 #    branches: [ master ]
    
 env:
-  WeTransfer: true
+  repo_url: https://github.com/immortalwrt/immortalwrt
+  repo_branch: openwrt-18.06
+  repo_os: openwrt
+  config: .config
+  diy_sh: diy.sh
+  model: HC5861
+  TZ: Asia/Shanghai
+  newpack: true6
+  set: true
 
 jobs:
     build:
@@ -22,10 +30,10 @@ jobs:
         - name: 清理环境
           run: |
              curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/coolsnowwolf/lede openwrt
-             zip -r 666.zip openwrt
+             git clone --depth 1 $repo_url -b $repo_branch openwrt
+             ./scripts/feeds update -a
+             zip -r 666.zip openwrt/target/linux/ramips
    
         - name: 上传至WeTransfer
-          if: env.WeTransfer == 'true'            
           run: |
              sudo ./transfer wet 666.zip
