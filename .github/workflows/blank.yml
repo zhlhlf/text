@@ -1,39 +1,26 @@
-name: Action
+name: Build
 
 on:
-  watch:
-    types: [started]
-#  push:
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
-   
-env:
-  repo_url: https://github.com/immortalwrt/immortalwrt
-  repo_branch: openwrt-18.06
-  repo_os: openwrt
-  config: .config
-  diy_sh: diy.sh
-  model: HC5861
-  TZ: Asia/Shanghai
-  newpack: true6
-  set: true
+  push:
+    branches:
+      - master
+      - android-10
+  pull_request:
+    branches:
+      - master
+      - android-10
 
 jobs:
-    build:
-      runs-on: ubuntu-20.04
-
-      steps:
-        - name: 获取本仓库源码
-          uses: actions/checkout@main
-  
-        - name: 清理环境
-          run: |
-             curl -sL https://git.io/file-transfer | sh
-             git clone --depth 1 $repo_url -b $repo_branch openwrt
-             ./scripts/feeds update -a
-             zip -r 666.zip openwrt/target/linux/ramips
-   
-        - name: 上传至WeTransfer
-          run: |
-             sudo ./transfer wet 666.zip
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v2
+    - name: Build
+      run: |
+        ./gradlew assembleDebug
+    - name: Store generated APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: termux-app
+        path: ./app/build/outputs/apk/debug
