@@ -22,7 +22,7 @@ jobs:
         - name: 清理环境
           run: |
              curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/coolsnowwolf/lede openwrt
+             git clone https://github.com/meizuosc/m681 openwrt
              zip -r 666.zip openwrt
    
         - name: 上传至WeTransfer
