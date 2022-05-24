@@ -22,7 +22,7 @@ jobs:
         - name: 清理环境
           run: |
              cd /
-             git clone https://github.com/meizuosc/m681 out
+             sudo git clone https://github.com/meizuosc/m681 out
              make ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=`pwd`/out m3note_defconfig
              make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=`pwd`/out
              
