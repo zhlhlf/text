@@ -21,10 +21,11 @@ jobs:
   
         - name: 清理环境
           run: |
-             curl -sL https://git.io/file-transfer | sh
-             git clone https://github.com/meizuosc/m681 openwrt
-             zip -r 666.zip openwrt
-   
+             cd /
+             git clone https://github.com/meizuosc/m681 out
+             make ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=`pwd`/out m3note_defconfig
+             make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=`pwd`/out
+             
         - name: 上传至WeTransfer
           if: env.WeTransfer == 'true'            
           run: |
