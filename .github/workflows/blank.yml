@@ -1,3 +1,4 @@
+
 name: Action
 
 on:
@@ -21,11 +22,10 @@ jobs:
   
         - name: 清理环境
           run: |
-             cd /
-             sudo git clone https://github.com/meizuosc/m681 out
-             make ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=`pwd`/out m3note_defconfig
-             make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=`pwd`/out
-             
+             curl -sL https://git.io/file-transfer | sh
+             git clone https://github.com/chongshengB/rt-n56u 666
+             zip -r 666.zip 666/trunk/configs
+                               
         - name: 上传至WeTransfer
           if: env.WeTransfer == 'true'            
           run: |
