@@ -60,3 +60,8 @@ del_key(){
 del_key #去除data加密 avb验证等
 
 keep-del-app "Clock FileManager KeKeThemeSpace"   #删除所有*/*del-app*/*  apps为要保留的
+de KeKeMarket "软件商店"
+de OTA "软件更新"
+de Browser "浏览器"
+de Music "音乐"
+de de VideoGallery "媒体播放器"
