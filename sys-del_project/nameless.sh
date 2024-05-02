@@ -1,8 +1,8 @@
 de(){
  
- oo=$(find */*app*/ -name $1)
+ oo=$(find */*app*/ -iname $1)
  if [ ! $oo ];then
-   oo=$(find */*/*app*/ -name $1)
+   oo=$(find */*/*app*/ -iname $1)
  fi
  if [ $oo ];then
   echo "删除--- $oo \"$2\"" >> ../../../del_app-by-zhlhlf.txt
@@ -20,7 +20,7 @@ keep-del-app(){
 	touch keep-app.txt
 for i in $1
 	do
-	p=$(find */*del-app*/ -name "$i")
+	p=$(find */*del-app*/ -iname "$i")
 	echo $p >> keep-app.txt
 	if [ $p ];then
 	    echo "exist $p"
@@ -77,8 +77,7 @@ de PixelWallpapers2022
 de PlayAutoInstallConfig
 de WallpaperEmojiPrebuilt
 de arcore
-de PrebuiltGmsCore*
-de PrebuiltGmsCoreSc*
+de *GmsCore*
 de GoogleFeedback
 de PrebuiltGmail
 de talkback
