@@ -77,8 +77,9 @@ de PixelWallpapers2022
 de PlayAutoInstallConfig
 de WallpaperEmojiPrebuilt
 de arcore
-de PrebuiltGmsCore
-de PrebuiltGmsCoreSc
+de PrebuiltGmsCore*
+de PrebuiltGmsCoreSc*
+de GoogleFeedback
 de PrebuiltGmail
 de talkback
 de AndroidAutoStubPrebuilt
