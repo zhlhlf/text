@@ -1,46 +1,13 @@
 de(){
- 
- oo=$(find */*app*/ -iname $1)
+ oo=$(find */*app*/ -iname $1  -maxdepth 0)
  if [ ! $oo ];then
-   oo=$(find */*/*app*/ -iname $1)
+   oo=$(find */*/*app*/ -iname $1  -maxdepth 0)
  fi
  if [ "$oo" ];then
   echo "删除--- $oo \"$2\"" >> ../../../del_app-by-zhlhlf.txt
   echo "删除--- $oo \"$2\""
   rm -rf $oo
  fi
-
-}
-
-keep-del-app(){
-	echo "------keep-del-app------"
-	rm -rf keep-app.txt
-	rm -rf keep-app
-    mkdir keep-app_zhlhlf
-	touch keep-app.txt
-for i in $1
-	do
-	p=$(find */*del-app*/ -iname "$i")
-	echo $p >> keep-app.txt
-	if [ $p ];then
-	    echo "exist $p"
-		mv $p ./keep-app_zhlhlf
-	fi
-done
-	rm -rf */*del-app*/*
-	k="1"
-for i in $1
-do
-	if [ -d ./keep-app_zhlhlf/$i ];then
-	    echo "move $i complete"
-		mv ./keep-app_zhlhlf/$i $(sed -n ${k}p keep-app.txt)
-	fi
-	k=$((k+1))
-done
-	rm -rf keep-app.txt
-	rm -rf keep-app_zhlhlf
-	echo -e "\n"
-	echo "------keep-del-app------"
 }
 
 del_key(){
