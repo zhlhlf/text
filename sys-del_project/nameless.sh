@@ -59,6 +59,7 @@ echo "ro.setupwizard.mode=DISABLED" >> system/system/build.prop #跳过谷歌向
 #rm -rf $(find ./ -name "SetupWizard") #删除后下拉 全面屏返回等出问题
 de Auxio
 de CalculatorGoogle
+de ViaBrowser
 de LinkToWindows 
 de CalculatorGooglePrebuilt
 de CalendarGooglePrebuilt
