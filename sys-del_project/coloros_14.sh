@@ -1,9 +1,9 @@
 de(){
  oo=$(find */*app*/* -iname $1  -maxdepth 0)
- if [ ! $oo ];then
+ if [ "$oo" == "" ];then
    oo=$(find */*/*app*/* -iname $1  -maxdepth 0)
  fi
- if [ "$oo" ];then
+ if [ "$oo" != "" ];then
   echo "删除--- $oo \"$2\"" >> ../../../del_app-by-zhlhlf.txt
   echo "删除--- $oo \"$2\""
   rm -rf $oo
