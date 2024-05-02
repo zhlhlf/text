@@ -57,7 +57,8 @@ del_key #去除data加密 avb验证等
 
 echo "ro.setupwizard.mode=DISABLED" >> system/system/build.prop #跳过谷歌向导
 #rm -rf $(find ./ -name "SetupWizard") #删除后下拉 全面屏返回等出问题
-
+de Auxio
+de CalculatorGoogle
 de LinkToWindows 
 de CalculatorGooglePrebuilt
 de CalendarGooglePrebuilt
