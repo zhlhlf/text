@@ -49,6 +49,10 @@ echo "-------del-app------"
 del_key(){
    for i in "vendor/etc/fstab.qcom" "boot/ramdisk/fstab.qcom" "boot/ramdisk/oplus.fstab" "boot/ramdisk/system/etc/fstab.qcom" 
    do
+    if [ ! -f $i ];then
+        continue
+    fi
+    echo "edit  $i ... "
     sed -i s#avb.*system,#""#g "$i"
     sed -i s#avb.*vendor,#""#g "$i"
     sed -i s#,fileencryption.*metadata_encryption#""#g "$i"
