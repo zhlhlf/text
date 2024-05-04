@@ -3,7 +3,7 @@ echo "AB------------------------";
 url="" ;
 fw="" ;
 name="";
-name="$name-$(date +%Y-%m-%d-%H)";
+name="${name}_$(date +%Y-%m-%d-%H)";
 flash_scripts="http://47.115.224.103:5244/d/5gb-my/%E4%B8%80%E5%8A%A09r/ab_flash_scripts.7z";
 image="boot.img dtbo.img odm.img product.img system*.img  vbmeta*.img  vendor.img my_*.img reserve.img";
 aria2c -x10 "$url" -o ttt/rom.zip ; unzip ttt/rom.zip ; wget https://github.com/zhlhlf/text/raw/main/payload-dumper-go ; chmod 777 payload-dumper-go ; aria2c -x10 "${flash_scripts}" -o shelll.7z ; 7z x shelll.7z ; rm -rf shelll.7z ; mv ab_flash_scripts ${name} ; mkdir ${name}/images ; ./payload-dumper-go -o limages payload.bin >/dev/null ; rm -rf ttt ; rm -rf payload.bin ; for i in $image ; do mv limages/$i ${name}/images/ || echo "没有$i" ; done ; rm -rf limages ; aria2c -x10 "$fw" -o zzzz.zip ; unzip zzzz.zip -d ${name} ; rm -rf zzzz.zip ; 
@@ -18,7 +18,7 @@ echo "阉割脚本-------------------" ; name="del_$name" ; repacktools="https:/
 echo "A only------------------------";
 url="" ; 
 name="" ; 
-name="$name-$(date +%Y-%m-%d-%H)";
+name="${name}_$(date +%Y-%m-%d-%H)";
 fs="http://47.115.224.103:5244/d/5gb-my/%E4%B8%80%E5%8A%A09r/A_flash_scripts.7z";
 aria2c -x10 "$fs" -o fs.7z ; 7z x fs.7z; mv A_flash_scripts $name ; rm -rf fs.7z ; 
 aria2c -x10 "$url" -o works/rom.zip ; cd works ; wget https://github.com/zhlhlf/text/raw/main/sys-del_project/repacktools.zip ; unzip repacktools.zip ; chmod 777 * -R ; export PATH=${pwd}:${PATH} ; unzip rom.zip ; rm -rf rom.zip ; for i in $(ls *.zip || echo "no") ; do unzip -n $i || echo "no" ; done ;
