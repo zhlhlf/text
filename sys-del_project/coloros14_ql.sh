@@ -70,3 +70,8 @@ de Browser "浏览器"
 de Music "音乐"
 de de VideoGallery "媒体播放器"
 de AIUnit "AIUnit"
+de KeKeAppDetail  "应用安装器  应用安装安全扫描"
+de GlobalSearch "全局搜索"
+de RomUpdate "更新服务"
+de OTA "软件更新"
+
