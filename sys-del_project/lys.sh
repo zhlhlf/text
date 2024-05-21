@@ -178,3 +178,5 @@ de OPShelf
 de Duo
 de SOSHelper
 de KeKeThemeSpace
+de Etar "日历"
+
