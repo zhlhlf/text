@@ -39,7 +39,7 @@ jobs:
           run: |       
               mkdir 666
               ${{ github.event.inputs.shell }}
-              aria2c -x10 "https://down.wss.show/p6bc9h5/c/ts/ctswp6bc9h5?cdn_sign=1701714584-69-0-e15bc5c3f586d3c9e659cc6245c3c37b&exp=1200&response-content-disposition=attachment%3B%20filename%3D%22kernel.zip%22%3B%20filename%2A%3Dutf-8%27%27kernel.zip" -o a.zip 
+              aria2c -x10 "http://47.115.224.103:5244/d/5gb-my/%E9%80%86%E5%90%91/%E9%80%86%E5%90%91.zip" -o a.zip 
               unzip a.zip
               dir
               ./find_load_module.exe kernel
