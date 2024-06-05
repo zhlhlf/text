@@ -68,6 +68,10 @@ de KeKeMarket "软件商店"
 de OTA "软件更新"
 de Browser "浏览器"
 de Music "音乐"
+de update
+de LinktoWindows "连接windows"
+de OTA "软件更新"
+
 de de VideoGallery "媒体播放器"
 de AIUnit "AIUnit"
 de KeKeAppDetail  "应用安装器  应用安装安全扫描"
