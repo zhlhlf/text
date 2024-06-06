@@ -72,7 +72,7 @@ de update
 de LinktoWindows "连接windows"
 de OTA "软件更新"
 
-de de VideoGallery "媒体播放器"
+de VideoGallery "媒体播放器"
 de AIUnit "AIUnit"
 de KeKeAppDetail  "应用安装器  应用安装安全扫描"
 de GlobalSearch "全局搜索"
