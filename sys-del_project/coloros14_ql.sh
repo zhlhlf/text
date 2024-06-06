@@ -71,6 +71,9 @@ de Music "音乐"
 de update
 de LinktoWindows "连接windows"
 de OTA "软件更新"
+de *SecurityKeyboard "安全键盘"
+de BrowserVideo "视频"
+de SafeCenter "安全中心"
 
 de VideoGallery "媒体播放器"
 de AIUnit "AIUnit"
