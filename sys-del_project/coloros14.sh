@@ -201,6 +201,6 @@ de VDCService "外设融合框架"
 de SmartEngine "智能引擎？"
 de Metis "智慧决策服务"
 de OpenCapabilityService ""
-de de VideoGallery "媒体播放器"
+de VideoGallery "媒体播放器"
 
 
