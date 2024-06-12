@@ -10,7 +10,7 @@ cd "$(mktemp -d)" || exit 1
 
 if [[ ${GITHUB_ACTIONS} != "true" || ${OSTYPE} != "linux-gnu" ]]; then
   printf "This Cleanup Script Is Intended For Ubuntu Runner.\n"
-  exit 1
+  #exit 1
 fi
 
 # Make Sure The Environment Is Non-Interactive
