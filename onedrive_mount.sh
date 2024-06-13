@@ -1,3 +1,4 @@
+#!/sbin/sh
 
 export RCLONE_CONFIG_PASS=$1
 rm -rf rclone.conf
@@ -10,7 +11,7 @@ umount zhlhlf > /dev/null
 rm -rf zhlhlf
 mkdir zhlhlf 
 rclone mount onedrive:/$2 ./zhlhlf --umask 000 --daemon
-echo "\n"
+echo -e "\n"
 
 
 
@@ -27,11 +28,11 @@ if [ ! "$tt" ];then
     break
 fi
 sizel=$(du -sb "$tt" | awk '{print $1}')
-echo "$(( $sizel / 1024/1024)) m   $(basename "$tt")"
+echo -e "$(( $sizel / 1024/1024)) m   $(basename "$tt")"
 done
 
 
-echo "\n"
+echo -e "\n"
 rclone copy 666 zhlhlf/ 
-echo "\n"
+echo -e "\n"
 ls zhlhlf
