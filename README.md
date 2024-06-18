@@ -4,9 +4,8 @@ url="" ;
 fw="" ;
 name="";
 name="${name}_$(date +%Y-%m-%d-%H)";
-flash_scripts="http://47.115.224.103:5244/d/5gb-my/%E4%B8%80%E5%8A%A09r/ab_flash_scripts.7z";
 image="boot.img dtbo.img odm.img product.img system*.img  vbmeta*.img  vendor.img my_*.img reserve.img";
-aria2c -x10 "$url" -o ttt/rom.zip ; unzip ttt/rom.zip ; wget https://github.com/zhlhlf/text/raw/main/payload-dumper-go ; chmod 777 payload-dumper-go ; aria2c -x10 "${flash_scripts}" -o shelll.7z ; 7z x shelll.7z ; rm -rf shelll.7z ; mv ab_flash_scripts ${name} ; mkdir ${name}/images ; ./payload-dumper-go -o limages payload.bin >/dev/null ; rm -rf ttt ; rm -rf payload.bin ; for i in $image ; do mv limages/$i ${name}/images/ || echo "没有$i" ; done ; rm -rf limages ; aria2c -x10 "$fw" -o zzzz.zip ; unzip zzzz.zip -d ${name} ; rm -rf zzzz.zip ; 
+aria2c -x10 "$url" -o ttt/rom.zip ; unzip ttt/rom.zip ; wget https://github.com/zhlhlf/text/raw/main/payload-dumper-go ; chmod 777 payload-dumper-go ; mkdir -p ${name}/images ; ./payload-dumper-go -o limages payload.bin >/dev/null ; rm -rf ttt ; rm -rf payload.bin ; for i in $image ; do mv limages/$i ${name}/images/ || echo "没有$i" ; done ; rm -rf limages ; aria2c -x10 "$fw" -o zzzz.zip ; unzip -qo zzzz.zip -d ${name} ; rm -rf zzzz.zip ; 
 
 cd ${name} ; rm -rf images/vbmeta.img images/reserve.img ; mv vbmeta.img images ; zip -r ${name}.zip * ; mv ${name}.zip ../ ; cd ../ ; rm -rf ${name} ; rm -rf 666 ; mkdir 666 ; mv ${name}.zip 666 ; wget https://raw.github.com/zhlhlf/text/main/onedrive_mount.sh ; sh onedrive_mount.sh $RCK 临时存放文件 ;
 
