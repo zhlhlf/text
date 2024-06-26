@@ -55,7 +55,7 @@ del_key(){
     echo "edit  $i ... "
     sed -i s#avb.*system,#""#g "$i"
     sed -i s#avb.*vendor,#""#g "$i"
-    sed -i s#,fileencryption.*metadata_encryption#""#g "$i"
+    sed -i s#fileencryption.*quota#quota#g "$i"
     sed -i s#,avb_keys.*pubkey#""#g "$i"
    done
 }
