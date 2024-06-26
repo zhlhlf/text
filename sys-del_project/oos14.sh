@@ -48,7 +48,6 @@ echo "-------del-app------"
 
 keep-del-app "Clock FileManager KeKeThemeSpace"   #删除所有*/*del-app*/*  apps为要保留的
 
-del_key #去除data加密 avb验证等
 rm -rf */*del-app*
 rm -rf */Omoji
 echo "ro.setupwizard.mode=DISABLED" >> system/system/build.prop #跳过谷歌向导
@@ -63,55 +62,55 @@ de GlobalSearch "全局搜索"
 de RomUpdate "更新服务"
 de OTA "软件更新"
 
-del AssistantScreen
-del CalendarGoogle
-del CloudService
-del Drive
-del Google_AssistantShell
-del Google_Lens
-del Google_Pay3
-del KeKePay
-del LatinImeGoogle
-del Meet
-del Netflix_Activation_OnePlus
-del Netflix_Stub
-del Omoji
-del Photos
-del SoftsimRedteaRoaming
-del Videos
-del YTMusic
-del Google_Home
-del Google_News
-del Google_One
-del Google_Podcasts
-del INOnePlusStore
-del NewSoundRecorder
-del AndroidSystemIntelligence_Features
-del GlobalSearch
-del Google_Files
-del KeKeThemeSpace
-del OPMemberShip
-del PrivateComputeServices
-del ARCore
-del Chrome
-del ChromePartnerProvider
-del EmailPartnerProvider
-del Gmail2
-del GoogleLocationHistory
-del MCS
-del Maps
-del Melody
-del SpeechServicesByGoogle
-del YouTube
-del *GmsCore*
-del GoogleOneTimeInitializer
-del GoogleRestore
-del Phonesky
-del Velvet
-del Wellbeing
-del BackupAndRestore
-del OPBreathMode
-del OPForum
-del OPWidget
-del OppoNote2
-del OppoRelax
+de AssistantScreen
+de CalendarGoogle
+de CloudService
+de Drive
+de Google_AssistantShell
+de Google_Lens
+de Google_Pay3
+de KeKePay
+de LatinImeGoogle
+de Meet
+de Netflix_Activation_OnePlus
+de Netflix_Stub
+de Omoji
+de Photos
+de SoftsimRedteaRoaming
+de Videos
+de YTMusic
+de Google_Home
+de Google_News
+de Google_One
+de Google_Podcasts
+de INOnePlusStore
+de NewSoundRecorder
+de AndroidSystemIntelligence_Features
+de GlobalSearch
+de Google_Files
+de KeKeThemeSpace
+de OPMemberShip
+de PrivateComputeServices
+de ARCore
+de Chrome
+de ChromePartnerProvider
+de EmailPartnerProvider
+de Gmail2
+de GoogleLocationHistory
+de MCS
+de Maps
+de Melody
+de SpeechServicesByGoogle
+de YouTube
+de *GmsCore*
+de GoogleOneTimeInitializer
+de GoogleRestore
+de Phonesky
+de Velvet
+de Wellbeing
+de BackupAndRestore
+de OPBreathMode
+de OPForum
+de OPWidget
+de OppoNote2
+de OppoRelax
