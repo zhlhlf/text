@@ -82,3 +82,17 @@ de GlobalSearch "全局搜索"
 de RomUpdate "更新服务"
 de OTA "软件更新"
 
+
+de AIUnit
+de Aod "息屏显示"
+de ChildrenSpace "儿童空间"
+de FloatAssistant "悬浮球"
+de HealthCheck
+de Portrait "人像绘影"
+de COSA "应用增强服务"
+de OplusOperationManual "帮助与反馈"
+de SceneMode "简易模式"
+de HeyCast "手机投屏"
+de OPSynergy "设备互联服务"
+
+
