@@ -33,7 +33,7 @@ jobs:
         - name: 打扫空间
           if: github.event.inputs.clear == 'true'
           run: |       
-              curl -sL https://raw.github.com/zhlhlf/text/main/cleanup.sh | bash
+              curl -sL https://raw.github.com/zhlhlf/text/main/cleanup.sh | bash >/dev/null 2>&1
               
         - name: 操作
           run: |  
