@@ -20,9 +20,9 @@ url="" ;
 name="" ; 
 name="${name}_$(date +%Y-%m-%d-%H)";
 image="boot.img dtbo.img odm.img product.img system*.img  vbmeta*.img  vendor.img my_*.img reserve.img";
-git clone https://github.com/zhlhlf/android_flash_scripts -b oplus_9r_A $name ; mkdir -p ${name}/images ${name}/firmware-update ;
+git clone https://github.com/zhlhlf/android_flash_scripts -b oplus_9r_A $name ; mkdir -p ${name}/images ${name}/firmware-update limages_zz ;
 aria2c -x10 "$url" -o limages/rom.zip ; cd limages ; wget -q https://github.com/zhlhlf/text/raw/main/sys-del_project/repacktools.zip ; unzip repacktools.zip ; chmod 777 * -R ; export PATH=${pwd}:${PATH} ; unzip rom.zip ; rm -rf rom.zip ; for i in $(ls *.zip || echo "no") ; do unzip -n $i || echo "no" ; done ;
-ls ; echo "\n" ; BR=$(ls *.br) ; for i in $BR ; do line=$(basename $i .new.dat.br) ; echo "> 正在分解：${line}.new.dat.br" ; brotli -d $i ; rm -r $i ; if [ -f ${line}.transfer.list ] ; then  a=${line}.transfer.list ; b=${line}.new.dat ; c="${line/.*/}.img" ; echo "$i   >   $a  $b   >   $c" ; log=$(sdat2img.py $a $b $c) ; rm -rf ${line}.transfer.list ; rm -rf ${line}.new.dat ; fi ; done ;  rm -r *.dat ; mv `find -name "*.img"` ./ ; cd .. ; for i in $image ; do mv limages/$i ${name}/images || echo "没有$i" ; done ; mv `find limages -name "*.img"` ${name}/firmware-update ; rm -rf limages ; 
+ls ; echo "\n" ; BR=$(ls *.br) ; for i in $BR ; do line=$(basename $i .new.dat.br) ; echo "> 正在分解：${line}.new.dat.br" ; brotli -d $i ; rm -r $i ; if [ -f ${line}.transfer.list ] ; then  a=${line}.transfer.list ; b=${line}.new.dat ; c="${line/.*/}.img" ; echo "$i   >   $a  $b   >   $c" ; log=$(sdat2img.py $a $b $c) ; rm -rf ${line}.transfer.list ; rm -rf ${line}.new.dat ; fi ; done ;  rm -r *.dat ; mv `find -name "*.img"` ../limages_zz/ ; cd .. ; for i in $image ; do mv -f limages_zz/$i ${name}/images || echo "没有$i" ; done ; mv -f `find limages_zz -name "*.img"` ${name}/firmware-update ; rm -rf limages limages_zz; 
 
 cd ${name} ; zip -r ${name}.zip * ; mv ${name}.zip ../ ; cd ../ ; rm -rf ${name} ; rm -r 666 || echo "666" ; mkdir 666 ; mv ${name}.zip 666 ; wget -q https://raw.github.com/zhlhlf/text/main/onedrive_mount.sh ; sh onedrive_mount.sh $RCK 临时存放文件
 ```
