@@ -71,7 +71,6 @@ de Music "音乐"
 de update
 de LinktoWindows "连接windows"
 de OTA "软件更新"
-de *SecurityKeyboard "安全键盘"
 de BrowserVideo "视频"
 de SafeCenter "安全中心"
 
@@ -81,7 +80,6 @@ de KeKeAppDetail  "应用安装器  应用安装安全扫描"
 de GlobalSearch "全局搜索"
 de RomUpdate "更新服务"
 de OTA "软件更新"
-
 
 de AIUnit
 de Aod "息屏显示"
@@ -126,7 +124,7 @@ de HTMLViewer ""
 de NetworkAssistSys "网络服务"
 de UpgradeGuide "升级指南"
 de CloudAccService "OPPO智慧云加速"
-de *SecurityKeyboard "安全键盘"
+# de *SecurityKeyboard "安全键盘"
 de WallpaperChooser "动态壁纸选择器"
 de *TranslationService "翻译服务"
 rm -rf */Omoji
