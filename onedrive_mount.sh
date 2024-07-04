@@ -10,11 +10,10 @@ mv -f rclone.conf /home/runner/.config/rclone/rclone.conf
 umount zhlhlf > /dev/null 2>&1
 rm -rf zhlhlf
 mkdir zhlhlf 
-rclone mount onedrive:/$2 ./zhlhlf --umask 000 --daemon 
 echo "==============list==============="
 du -h 666/*
 echo
-rclone copy 666 zhlhlf/ 
+rclone sync -P 666 onedrive:/$2
 echo
 echo
 echo "==============onedrive-list==============="
