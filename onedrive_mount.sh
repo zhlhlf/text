@@ -13,7 +13,7 @@ mkdir zhlhlf
 echo "==============list==============="
 du -h 666/*
 echo
-rclone sync -P 666 onedrive:/$2
+rclone sync -P 666 onedrive:/$2 --quiet
 echo
 echo
 echo "==============onedrive-list==============="
