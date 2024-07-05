@@ -126,3 +126,18 @@ de OPForum
 de OPWidget
 de OppoNote2
 de OppoRelax
+
+de ColorDirectService
+de *Weather*
+de ViewTalk
+de AccessoryFramework
+de KeKeUserCenter
+de GoogleServicesFramework
+de Olc
+de PostmanService
+de HealthConnectControllerGoogle*
+de AdServicesApkGoogle*
+de NetworkAssistSys
+de CalendarProvider
+de *EngineerCamera
+de BuiltInPrintService
