@@ -8,6 +8,8 @@ import hashlib
 import os
 import sys
 
+sleep_time = 3
+
 class We:
     def __init__(self):
         """
@@ -36,72 +38,6 @@ class We:
         self.endpoints = self.__decodejwt(auth_bearer)
         return self.__process_files(files, transfer_id, path, type, auth_bearer)
 
-    def download(self, download_url: str, download_path: str = ''):
-        """Downloads from a url
-        -> https://wetransfer.com/downloads/XXXXXXXXXX/YYYYY\n
-        -> https://we.tl/X-XXXXXX
-        """
-        id, hash = self.__get_id_hash(download_url)
-        metadata = self.url_metadata(id, hash)
-        ddl = self.__get_ddl(id, hash)
-        ext = metadata['recommended_filename'].split('.')[-1]
-        if download_path == '':
-            download_path = os.path.join(
-                os.getcwd(), metadata['display_name'].split('.')[0]+'.'+ext)
-
-        print(
-            f'Downloading {metadata["display_name"]} [{metadata["size"]/(1024*1014)} MB]')
-
-        with open(download_path, 'wb') as f:
-            f.write(self.__session.get(ddl).content)
-        return download_path
-
-    def __get_ddl(self, id: str, hash: str):
-
-        json_data = {
-            'security_hash': hash,
-            'intent': 'entire_transfer',
-        }
-
-        response = self.__session.post(
-            f'https://wetransfer.com/api/v4/transfers/{id}/download', json=json_data)
-
-        if response.status_code == 200:
-            return response.json()['direct_link']
-        else:
-            raise Exception('get_ddl error\n', response.text)
-
-    def __get_id_hash(self, url: str):
-
-        if 'downloads' in url:
-            result = re.search(
-                r'https://wetransfer\.com/downloads/(.+)/(.+)', url)
-            if result:
-                return result.group(1), result.group(2)
-            else:
-                raise Exception('get_id_hash error\n')
-
-        response = self.__session.get(url)
-        if response.status_code == 200:
-            result = re.search(
-                r'\"https://wetransfer\.com/downloads/(.+)/(.+)\"', response.text)
-            if result:
-                return result.group(1), result.group(2)
-            else:
-                raise Exception('get_id_hash error\n', response.text)
-
-    def url_metadata(self, id: str, hash: str):
-        json_data = {
-            'security_hash': hash,
-        }
-
-        response = self.__session.post(
-            f'https://wetransfer.com/api/v4/transfers/{id}/prepare-download', json=json_data)
-
-        if response.status_code == 200:
-            return response.json()
-        else:
-            raise Exception('url_metadata error\n', response.text)
 
     def __get_files(self, path: str) -> list:
         if os.path.isfile(path):
@@ -193,11 +129,9 @@ class We:
 
         s3_urls = self.__blocks(blocks_payload, auth_bearer)  # url md5 blockid
 
-        # print(s3_urls)
-
         self.__upload_chunks(files_path, s3_urls)
 
-        time.sleep(2)
+        time.sleep(sleep_time)
 
         self.__batch(file_name_bcount, s3_urls, auth_bearer)
 
@@ -294,9 +228,9 @@ class We:
         )
 
         if response.status_code != 200:
-            raise Exception("Finalize error\n", response.text)
+            return str("Finalize error\n")
         else:
-            return response.json()
+            return response.json()["shortened_url"]
     
     def __decodejwt(self, jwt_token):
         payload_b64= jwt_token.split('.')[1]
@@ -305,9 +239,17 @@ class We:
 
 if __name__ == "__main__":
     qw=We()
-    for i in sys.argv[2:]:
-        if sys.argv[1] == "-u":
-          print(i)
-          print("url: " + qw.upload(i)["shortened_url"] + "\n")
-        if sys.argv[1] == "-d":
-          print(i+"   "+"sdfgs")
+    for i in sys.argv[1:]:
+        print(i)
+        url = qw.upload(i)
+        count = 0
+        while True:
+            url = qw.upload(i)
+            if count == 5:
+                break
+            if url.endswith("error"):
+                sleep_time+=1
+                count+=1
+                continue
+            break
+        print("url: " + url + "\n")
