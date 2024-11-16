@@ -240,6 +240,7 @@ class We:
 if __name__ == "__main__":
     qw=We()
     for i in sys.argv[1:]:
+        sleep_time = 3
         print(i)
         url = qw.upload(i)
         count = 0
