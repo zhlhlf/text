@@ -33,5 +33,5 @@ https://drive.google.com/uc?id=1mvZxjJRPp-dweFv7sE7jTxIvvUEXReFQ&export=download
 ```
 ```
 urls=""; 
-pip install youtube-dl;rm -rf 666;mkdir 666;cd 666;for i in $urls;do youtube-dl  $i --external-downloader aria2c --external-downloader-args "-x10" ;done;cd ..; curl -sL https://github.com/zhlhlf/text/raw/refs/heads/main/upload-wetransfer.py | bash -s 666/*
+pip install youtube-dl;rm -rf 666;mkdir 666;cd 666;for i in $urls;do  rm -rf 666/*; youtube-dl  $i --external-downloader aria2c --external-downloader-args "-x10" >> /dev/null ; curl -sL https://github.com/zhlhlf/text/raw/refs/heads/main/upload-wetransfer.py | bash -s 666/* ;done
 ```
