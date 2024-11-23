@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #google url download
 # in https://drive.usercontent.google.com/download?id=18beYZJsFLoroun3DlaaI188KWdjU1Zr9&export=download&authuser=0
 
