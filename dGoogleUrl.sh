@@ -20,7 +20,7 @@ sed -i "s/>/\n/g" $file
 
 sed -i "s/<.*//g" $file
 
-ff=""
+ff="?asd=zhlhlf"
 while true;do
     key=`grep "name" $file | head -n1 | cut -d'"' -f 4`
     if [ ! "$key" ];then break; fi
