@@ -6,8 +6,9 @@
 file=data
 
 url="$1"
+#url="https://drive.usercontent.google.com/download?id=18beYZJsFLoroun3DlaaI188KWdjU1Zr9&export=download&authuser=0"
 
-curl "$url" > $file
+curl -q "$url" > $file
 
 sed -i 's/.*<form//g' $file
 sed -i 's/<input/\n/g' $file
@@ -26,7 +27,7 @@ while true;do
     if [ ! "$key" ];then break; fi
     value=`grep "name" $file | head -n1 | cut -d'"' -f 6`
     ff="$ff$key=$value&"
-    sed -i "s/.*name=\"$key\".*//g" $file
+    sed -i "s/.*$key.*$value.*//g" $file
 done
 
 echo ${url}${ff}
