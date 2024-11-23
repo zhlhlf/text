@@ -25,7 +25,7 @@ while true;do
     key=`grep "name" $file | head -n1 | cut -d'"' -f 4`
     if [ ! "$key" ];then break; fi
     value=`grep "name" $file | head -n1 | cut -d'"' -f 6`
-    ff+="&$key=$value"
+    ff="$ff&$key=$value"
     sed -i "s/.*name=\"$key\".*//g" $file
 done
 
