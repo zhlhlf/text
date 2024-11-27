@@ -50,16 +50,20 @@ while true;do
     sleep 3
 done
 
-echo "mount yes    start sync"
-rclone copy $A $B --progress --transfers=$(nproc --all) > a.log 2>&1 &
+asd(){
+    while true; do
+        echo > a.log
+        sleep 3
+        tail -n$(nproc --all) a.log
+        echo
+        sleep 10
+    done
+}
 
-while true; do
-    if [ ! "`ps -A | grep rclone`" ];then break; fi
-    echo > a.log
-    sleep 3
-    tail -n4 a.log
-    echo
-    sleep 10
-done
+echo "mount yes    start sync"
+asd &
+pid=$!
+
+rclone copy $A $B --progress --transfers=$(nproc --all) > a.log && kill -8 $pid
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
