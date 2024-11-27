@@ -7,6 +7,12 @@
 pass=$1
 mount_dir=$2
 
+if [ "$2" ];then
+    mount_dir=$2
+else
+    mount_dir=tyy2/临时存放文件
+fi
+
 if [ "$3" ];then
     in_dir=$3
 else
