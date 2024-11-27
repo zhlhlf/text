@@ -1,0 +1,50 @@
+
+name: Action
+
+on:
+  workflow_dispatch:
+
+    inputs:
+      shell:
+        description: 'shell'
+        required: true
+        default: 'ls ; '
+        
+      ssh:
+        description: 'ssh'
+        required: true
+        default: 'false'
+        type: boolean   
+
+      clear:
+        description: 'clear?'
+        required: true
+        default: 'false'
+        type: boolean   
+
+jobs:
+    build:
+      runs-on: ubuntu-20.04
+
+      steps:
+        - name: 获取本仓库源码
+          uses: actions/checkout@main
+        
+        - name: 打扫空间
+          if: github.event.inputs.clear == 'true'
+          run: |       
+              curl -sL https://raw.github.com/zhlhlf/text/main/cleanup.sh | bash
+              
+        - name: 操作
+          run: |  
+              RCK="${{ secrets.RCK }}"
+              mkdir 666
+              ${{ github.event.inputs.shell }}
+              
+        - name: 高级操作
+          if: github.event.inputs.ssh == 'true'
+          run: |
+            curl -SL http://raw.github.com/zhlhlf/text/main/ssh.sh | sudo bash    
+    
+              
+    
