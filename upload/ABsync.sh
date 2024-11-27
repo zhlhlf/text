@@ -56,10 +56,10 @@ rclone copy $A $B --progress --transfers=$(nproc --all) > a.log 2>&1 &
 while true; do
     if [ ! "`ps -A | grep rclone`" ];then break; fi
     echo > a.log
-    sleep 1
+    sleep 3
     tail -n4 a.log
     echo
-    sleep 12
+    sleep 10
 done
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
