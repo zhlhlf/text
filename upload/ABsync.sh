@@ -9,6 +9,7 @@ A=$2
 B=$3
 
 rm -rf $A $B
+mkdir $A $B
 
 alist_data=https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist_data.zip
 
