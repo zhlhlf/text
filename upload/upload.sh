@@ -59,16 +59,21 @@ done
 echo "==============list==============="
 du -h $in_dir/*
 echo
-rclone copy $in_dir $current_dir --progress --transfers=$(nproc --all) > a.log 2>&1 &
 
-while true; do
-    if [ ! "`ps -A | grep rclone`" ];then break; fi
-    echo > a.log
-    sleep 5
-    tail -n4 a.log
-    echo
-    sleep 10
-done
+asd(){
+    while true; do
+        echo > a.log
+        sleep 3
+        tail -n$(nproc --all) a.log
+        echo
+        sleep 10
+    done
+}
+
+echo "mount yes    start sync"
+asd &
+
+rclone copy $in_dir $current_dir --progress --transfers=$(nproc --all) > a.log
 
 echo
 echo
