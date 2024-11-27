@@ -55,7 +55,7 @@ asd(){
         echo > a.log
         sleep 3
         tail -n$(nproc --all) a.log
-        echo "\n"
+        echo -e "\n"
         sleep 10
     done
 }
