@@ -59,7 +59,16 @@ done
 echo "==============list==============="
 du -h $in_dir/*
 echo
-rclone copy $in_dir $current_dir
+rclone copy $in_dir $current_dir  > a.log 2>&1 &
+
+while true; do
+    if [ ! "`ps -A | grep rclone`" ];then break; fi
+    echo > a.log
+    sleep 1
+    tail -n4 a.log
+    sleep 15
+done
+
 echo
 echo
 echo "==============all-file-list==============="
