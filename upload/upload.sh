@@ -72,8 +72,9 @@ asd(){
 
 echo "mount yes    start sync"
 asd &
+pid=$!
 
-rclone copy $in_dir $current_dir --progress --transfers=$(nproc --all) > a.log
+rclone copy $in_dir $current_dir --progress --transfers=$(nproc --all) > a.log && kill -8 $pid
 
 echo
 echo
