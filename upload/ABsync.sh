@@ -8,6 +8,8 @@ pass=$1
 A=$2
 B=$3
 
+umount $A > /dev/null 2>&1
+umount $B > /dev/null 2>&1
 rm -rf $A $B
 mkdir $A $B
 
@@ -33,7 +35,7 @@ cd ..
 i=0
 while true;do
     sleep 3
-    if [ "$i" == 4 ];then exit; fi
+    if [ "$i" == 6 ];then exit; fi
     rclone mount alist:/$A ./$A --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
@@ -41,15 +43,22 @@ done
 
 i=0
 while true;do
-    sleep 3
     if [ "$i" == 4 ];then exit; fi
     rclone mount alist:/$B ./$B --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
+    sleep 3
 done
 
-echo
-rclone copy $A $B --progress=25s --transfers=$(nproc --all)
-echo
+echo "mount yes    start sync"
+rclone copy $A $B --progress --transfers=$(nproc --all) > a.log 2>&1 &
+
+while true; do
+    if [ ! "`ps -A | grep rclone`" ];then break; fi
+    echo > a.log
+    sleep 1
+    tail -n4 a.log
+    sleep 10
+done
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
