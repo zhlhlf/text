@@ -54,7 +54,8 @@ asd(){
     while true; do
         echo > a.log
         sleep 3
-        echo "`tail -n$(nproc --all) a.log`\n\n"
+        tail -n$(nproc --all) a.log
+        echo -e "\n\n"
         sleep 10
     done
 }
