@@ -58,7 +58,8 @@ while true; do
     echo > a.log
     sleep 1
     tail -n4 a.log
-    sleep 10
+    echo
+    sleep 12
 done
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
