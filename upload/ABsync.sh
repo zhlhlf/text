@@ -49,7 +49,7 @@ while true;do
 done
 
 echo
-rclone copy $A $B
+rclone copy $A $B --progress --transfers=$(nproc --all)
 echo
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
