@@ -56,10 +56,13 @@ while true;do
     i=$((i+1))
 done
 
+count=$(nproc --all)
 asd(){
-    echo > a.log
-    sleep 10
-    tail -n1 a.log
+    while true;do
+        sleep 6
+        tail -n$count a.log
+        echo > a.log
+    done
 }
 asd &
 pid=$!
@@ -67,7 +70,9 @@ pid=$!
 echo "==============list==============="
 du -h $in_dir/*
 echo
-rclone copy -P $in_dir $current_dir > a.log && kill -8 $pid
+echo "start sync"
+echo
+rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
 echo
 echo
 echo "==============all-file-list==============="

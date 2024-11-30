@@ -48,16 +48,19 @@ while true;do
     i=$((i+1))
 done
 
+count=$(nproc --all)
 asd(){
-    echo > a.log
-    sleep 10
-    tail -n1 a.log
+    while true;do
+        sleep 12
+        tail -n$count a.log
+        echo > a.log
+    done
 }
 asd &
 pid=$!
-
+echo "start sync"
 echo
-rclone copy -P $A $B  > a.log && kill -8 $pid
+rclone copy $A $B -P --transfers=$count > a.log && kill -8 $pid
 echo
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
