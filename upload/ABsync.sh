@@ -64,4 +64,4 @@ rclone copy $A $B -P --transfers=$count > a.log && kill -8 $pid
 echo
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
-rm -r alists
+rm -r alist
