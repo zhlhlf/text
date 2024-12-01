@@ -21,7 +21,7 @@ rm -rf alist_data.zip alist
 mkdir alist && cd alist
 wget -q $alist_data -O alist_data.zip
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist
-unzip -P $pass -qo alist_data.zip
+unzip -P $pass -qo alist_data.zip || (echo "pass fail" ; exit)
 rm -r alist_data.zip
 cp -r rclone.conf ~/.config/rclone/rclone.conf
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
