@@ -39,7 +39,7 @@ i=0
 while true;do
     sleep 3
     if [ "$i" == 6 ];then exit; fi
-    rclone mount alist:/$A ./$A --umask 000 --daemon >/dev/null 2>&1
+    rclone mount alist:/$A ./$A2 --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
 done
@@ -48,7 +48,7 @@ i=0
 while true;do
     sleep 3
     if [ "$i" == 4 ];then exit; fi
-    rclone mount alist:/$B ./$B --umask 000 --daemon >/dev/null 2>&1
+    rclone mount alist:/$B ./$B2 --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
 done
