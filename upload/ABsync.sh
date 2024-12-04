@@ -8,8 +8,13 @@ pass=$1
 A=$2
 B=$3
 
-rm -rf $A $B
-mkdir $A $B
+A2=`echo "$A" | sed "s/\//\-/g"`
+B2=`echo "$B" | sed "s/\//\-/g"`
+
+umount $A2 > /dev/null 2>&1
+umount $B2 > /dev/null 2>&1
+rm -rf $A2 $B2
+mkdir $A2 $B2
 
 alist_data=https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist_data.zip
 
