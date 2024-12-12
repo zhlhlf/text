@@ -5,7 +5,7 @@ export RCLONE_CONFIG_PASS=$1
 if [ "$2" ];then
     mount_dir=$2
 else
-    mount_dir=5tb/临时存放文件
+    mount_dir=onedrive/临时存放文件
 fi
 
 if [ "$3" ];then
