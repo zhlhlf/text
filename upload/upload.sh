@@ -5,7 +5,7 @@ export RCLONE_CONFIG_PASS=$1
 if [ "$2" ];then
     mount_dir=$2
 else
-    mount_dir=onedrive/临时存放文件
+    mount_dir=临时存放文件
 fi
 
 if [ "$3" ];then
@@ -32,6 +32,8 @@ umount $current_dir > /dev/null 2>&1
 rm -rf $current_dir
 mkdir $current_dir 
 chmod 777 $current_dir
+
+rclone mount onedrive:/$mount_dir ./$current_dir --umask 000 --daemon >/dev/null 2>&1
 
 count=$(nproc --all)
 asd(){
