@@ -1,14 +1,4 @@
-de(){
- oo=$(find */*app*/* -iname $1  -maxdepth 0)
- if [ "$oo" == "" ];then
-   oo=$(find */*/*app*/* -iname $1  -maxdepth 0)
- fi
- if [ "$oo" != "" ];then
-  echo "删除--- $oo \"$2\"" >> ../../../del_app-by-zhlhlf.txt
-  echo "删除--- $oo \"$2\""
-  rm -rf $oo
- fi
-}
+
 
 del_key(){
    for i in "vendor/etc/fstab.qcom" "boot/ramdisk/fstab.qcom" "boot/ramdisk/oplus.fstab" "boot/ramdisk/system/etc/fstab.qcom" 
