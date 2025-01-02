@@ -1,41 +1,4 @@
 
-
-
-keep-del-app(){
-echo "-------del-app------"
-for i in $(find */*del-app*/* -maxdepth 0)
-do
-  uu=$(echo "$1" | grep -i $(basename $i))
-  if [ "$uu" ];then
-    echo "    保留--- $i"
-  else
-    rm -rf $i
-    echo "删除--- $i"
-    echo "删除--- $i" >> ../../../del_app-by-zhlhlf.txt
-  fi
-done
-
-if [ -d "reserve" ];then
-  echo "----存在reserve分区-----"
-  for i in $(find reserve/*/*app*/* -maxdepth 0)
-  do
-   uu=$(echo "$1" | grep -i $(basename $i))
-   if [ "$uu" ];then
-   echo "    保留--- $i"
-      name=$(basename $(ls $i))
-      echo "name=\"$name\" info_1=\"0\" info_2=\"0\" location=\"del-app/$(basename $i)/$name\"" >> my_bigball/apkcerts.txt
-      mv $i my_bigball/del-app/
-    else
-      rm -rf $i
-      echo "删除--- $i"
-      echo "删除--- $i" >> ../../../del_app-by-zhlhlf.txt
-    fi
-  done
-fi
-
-echo "-------del-app------"
-}
-
 keep-del-app "Clock FileManager KeKeThemeSpace"   #删除所有*/*del-app*/*  apps为要保留的
 
 rm -rf */*del-app*
