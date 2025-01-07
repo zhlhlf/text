@@ -81,5 +81,18 @@ echo "==============all-file-list==============="
 ls $current_dir
 umount $current_dir
 
+echo "==============fail-list==============="
+cd $in_dir
+find -type f | sed 's#./##g' > ../file_list.txt
+cd ..
+list=""
+for i in $(cat file_list.txt)
+do
+    if [ -f "$in_dir/$i" ] && [ ! -f "$current_dir/$i" ]; then
+        list+="$i\n"
+    fi
+done
+echo -e "$list"
+
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 rm -r alist
