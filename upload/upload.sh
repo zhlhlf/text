@@ -47,7 +47,7 @@ cd ..
 umount $current_dir > /dev/null 2>&1
 rm -rf $current_dir
 mkdir $current_dir 
-chmod 777 $current_di
+chmod 777 $current_dir
 #curl 127.0.0.1:5244 > /dev/null 2>&1
 i=0
 while true;do
