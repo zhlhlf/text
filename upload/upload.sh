@@ -69,7 +69,7 @@ asd(){
 asd &
 pid=$!
 
-echo "==============list==============="
+echo "==============upload-list==============="
 du -h $in_dir/*
 echo
 echo "start sync"
@@ -77,6 +77,9 @@ echo
 rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
 echo
 echo
+echo "==============upload-list==============="
+du -h $in_dir/*
+
 echo "==============all-file-list==============="
 ls $current_dir
 umount $current_dir
@@ -88,7 +91,7 @@ cd ..
 list=""
 for i in $(cat file_list.txt)
 do
-    if [ -f "$in_dir/$i" ] && [ ! -f "$current_dir/$i" ]; then
+    if [ ! -f "$current_dir/$i" ]; then
         list+="$i\n"
     fi
 done
