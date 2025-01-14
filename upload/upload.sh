@@ -66,7 +66,7 @@ asd(){
         echo > a.log
     done
 }
-asd &
+# asd &
 pid=$!
 
 echo "==============upload-list==============="
