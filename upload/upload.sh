@@ -76,6 +76,7 @@ echo "start sync"
 echo
 rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
 echo
+echo "mount_dir: $mount_dir"
 echo
 echo "==============upload-list==============="
 du -h $in_dir/*
