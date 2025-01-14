@@ -92,7 +92,7 @@ find -type f | sed 's#./##g' > ../current_file_list.txt
 cd ..
 list=""
 while IFS= read -r i; do
-    if ! grep -q "^$i$" ../current_file_list.txt; then
+    if ! grep -q "^$i$" current_file_list.txt; then
         list+="$file\n"
     fi
 done < input_file_list.txt
