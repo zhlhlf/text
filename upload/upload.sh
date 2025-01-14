@@ -74,7 +74,7 @@ du -h $in_dir/*
 echo
 echo "start sync"
 echo
-rclone copy $in_dir $current_dir -P --transfers=$count > a.log 
+rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
 echo
 echo
 echo "==============upload-list==============="
