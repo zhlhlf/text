@@ -85,7 +85,7 @@ ls $current_dir
 
 echo "==============fail-list==============="
 cd $in_dir
-find -type f | sed 's#./##g' > ../input_list.txt
+find -type f | sed 's#./##g' > ../input_file_list.txt
 cd ..
 cd $current_dir
 find -type f | sed 's#./##g' > ../current_file_list.txt
@@ -95,9 +95,9 @@ while IFS= read -r i; do
     if ! grep -q "^$i$" ../current_file_list.txt; then
         list+="$file\n"
     fi
-done < file_list.txt
+done < input_file_list.txt
 echo -e "$list"
 
-rm -f file_list.txt current_file_list.txt
+rm -f input_file_list.txt current_file_list.txt
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 rm -r alist
