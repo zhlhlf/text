@@ -74,7 +74,7 @@ du -h $in_dir/*
 echo
 echo "start sync"
 echo
-rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
+rclone copy $in_dir $current_dir -P --transfers=$count > a.log 
 echo
 echo
 echo "==============upload-list==============="
@@ -82,20 +82,25 @@ du -h $in_dir/*
 
 echo "==============all-file-list==============="
 ls $current_dir
-umount $current_dir
 
 echo "==============fail-list==============="
 cd $in_dir
 find -type f | sed 's#./##g' > ../file_list.txt
 cd ..
+cd $current_dir
+find -type f | sed 's#./##g' > ../current_file_list.txt
+cd ..
+
 list=""
 for i in $(cat file_list.txt)
 do
-    if [ ! -f "$current_dir/$i" ]; then
+    if ! grep -q "^$i$" current_file_list.txt; then
         list+="$i\n"
     fi
 done
 echo -e "$list"
+
+rm -f file_list.txt current_file_list.txt
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 rm -r alist
