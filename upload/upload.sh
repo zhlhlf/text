@@ -48,7 +48,7 @@ umount $current_dir > /dev/null 2>&1
 rm -rf $current_dir
 mkdir $current_dir 
 chmod 777 $current_dir
-#curl 127.0.0.1:5244 > /dev/null 2>&1
+
 i=0
 while true;do
     sleep 3
@@ -74,7 +74,7 @@ du -h $in_dir/*
 echo
 echo "start sync"
 echo
-rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
+rclone copy $in_dir $current_dir -P --transfers=$count > a.log 
 echo
 echo
 echo "==============upload-list==============="
@@ -85,22 +85,19 @@ ls $current_dir
 
 echo "==============fail-list==============="
 cd $in_dir
-find -type f | sed 's#./##g' > ../file_list.txt
+find -type f | sed 's#./##g' > ../input_list.txt
 cd ..
 cd $current_dir
 find -type f | sed 's#./##g' > ../current_file_list.txt
 cd ..
-
 list=""
-for i in $(cat file_list.txt)
-do
-    if ! grep -q "^$i$" current_file_list.txt; then
-        list+="$i\n"
+while IFS= read -r i; do
+    if ! grep -q "^$i$" ../current_file_list.txt; then
+        list+="$file\n"
     fi
-done
+done < file_list.txt
 echo -e "$list"
 
 rm -f file_list.txt current_file_list.txt
-
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 rm -r alist
