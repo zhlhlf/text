@@ -79,18 +79,18 @@ echo
 echo "mount_dir: $mount_dir"
 echo
 echo "==============upload-list==============="
-du -h $in_dir/*
-
-echo "==============all-file-list==============="
-ls $current_dir
-
-echo "==============fail-list==============="
 cd $in_dir
 find -type f | sed 's#./##g' > ../input_file_list.txt
 cd ..
+cat input_file_list.txt
+
+echo "==============all-file-list==============="
 cd $current_dir
 find -type f | sed 's#./##g' > ../current_file_list.txt
 cd ..
+cat current_file_list.txt
+
+echo "==============fail-list==============="
 list=""
 while IFS= read -r i; do
     if ! grep -qF "$i" current_file_list.txt; then
