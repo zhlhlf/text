@@ -58,11 +58,10 @@ while true;do
     i=$((i+1))
 done
 
-count=$(nproc --all)
 asd(){
     while true;do
         sleep 6
-        tail -n$count a.log
+        tail -n1 a.log
         echo > a.log
     done
 }
@@ -78,17 +77,20 @@ rclone copy $in_dir $current_dir -P --transfers=$count > a.log && kill -8 $pid
 echo
 echo "mount_dir: $mount_dir"
 echo
+
 echo "==============upload-list==============="
 cd $in_dir
 find -type f | sed 's#./##g' > ../input_file_list.txt
 cd ..
 cat input_file_list.txt
+echo
 
 echo "==============all-file-list==============="
 cd $current_dir
 find -type f | sed 's#./##g' > ../current_file_list.txt
 cd ..
 cat current_file_list.txt
+echo
 
 echo "==============fail-list==============="
 list=""
