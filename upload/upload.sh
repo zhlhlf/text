@@ -58,11 +58,12 @@ while true;do
     i=$((i+1))
 done
 
+count=$(nproc --all)
 asd(){
     while true;do
-        sleep 6
-        tail -n1 a.log
         echo > a.log
+        sleep 6
+        tail -n$count a.log
     done
 }
 # asd &
