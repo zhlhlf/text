@@ -32,6 +32,11 @@ jobs:
           with:
             swap-size-mb: 8192
             
+        - name: 注入私有Secrets到环境
+          uses: zhlhlf/Secrets_To_Env@master
+          with:
+            secrets_json: ${{ toJSON(secrets) }}
+                      
         - name: 获取本仓库源码
           uses: actions/checkout@main
         
