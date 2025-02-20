@@ -7,6 +7,7 @@
 pass=$1
 A=$2
 B=$3
+data_host="http://119.8.42.151:29155"
 
 A2=`echo "$A" | sed "s/\//\-/g"`
 B2=`echo "$B" | sed "s/\//\-/g"`
@@ -16,8 +17,7 @@ umount $B2 > /dev/null 2>&1
 rm -rf $A2 $B2
 mkdir $A2 $B2
 
-alist_data=https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist_data.zip
-
+alist_data="$data_host/getAlistDataZip?key=$pass"
 
 rm -rf rclone.conf ~/.config/rclone/
 mkdir -p ~/.config/rclone/
@@ -26,7 +26,7 @@ rm -rf alist_data.zip alist
 mkdir alist && cd alist
 wget -q $alist_data -O alist_data.zip
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist
-unzip -P $pass -qo alist_data.zip || (echo "pass fail" ; exit)
+unzip -qo alist_data.zip || (echo "pass fail" ; exit)
 rm -r alist_data.zip
 cp -r rclone.conf ~/.config/rclone/rclone.conf
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
