@@ -31,14 +31,14 @@ jobs:
           uses: zhlhlf/maximize-build-space@master
           with:
             swap-size-mb: 8192
-            
+                      
+        - name: 获取本仓库源码
+          uses: actions/checkout@main
+                
         - name: 注入私有Secrets到环境
           uses: zhlhlf/Secrets_To_Env@master
           with:
             secrets_json: ${{ toJSON(secrets) }}
-                      
-        - name: 获取本仓库源码
-          uses: actions/checkout@main
         
         - name: 打扫空间
           if: github.event.inputs.clear == 'true'
