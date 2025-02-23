@@ -11,7 +11,7 @@ data_host="http://119.8.42.151:29155"
 if [ "$2" ];then
     mount_dir=$2
 else
-    mount_dir=tyy2/临时存放文件
+    mount_dir=5tb/临时存放文件
 fi
 echo "mount_dir: $mount_dir"
 
