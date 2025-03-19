@@ -61,9 +61,9 @@ done
 count=$(nproc --all)
 asd(){
     while true;do
-        echo > a.log
         sleep 6
         tail -n$count a.log
+        echo
     done
 }
 # asd &

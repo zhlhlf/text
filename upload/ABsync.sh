@@ -61,6 +61,7 @@ asd(){
         sleep 12
         tail -n$count a.log
         echo > a.log
+        echo
     done
 }
 asd &
