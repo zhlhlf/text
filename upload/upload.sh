@@ -51,8 +51,8 @@ chmod 777 $current_dir
 
 i=0
 while true;do
-    sleep 4
-    if [ "$i" == 6 ];then exit; fi
+    sleep 1
+    if [ "$i" == 60 ];then exit; fi
     rclone mount alist:/$mount_dir ./$current_dir --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))

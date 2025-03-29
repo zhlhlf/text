@@ -37,8 +37,8 @@ cd ..
 #curl 127.0.0.1:5244 > /dev/null 2>&1
 i=0
 while true;do
-    sleep 4
-    if [ "$i" == 6 ];then exit; fi
+    sleep 1
+    if [ "$i" == 60 ];then exit; fi
     rclone mount alist:/$A ./$A2 --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
@@ -48,8 +48,8 @@ echo "mount $A succed"
 
 i=0
 while true;do
-    sleep 3
-    if [ "$i" == 4 ];then exit; fi
+    sleep 1
+    if [ "$i" == 60 ];then exit; fi
     rclone mount alist:/$B ./$B2 --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
