@@ -11,7 +11,7 @@ data_host="http://119.8.42.151:29155"
 if [ "$2" ];then
     mount_dir=$2
 else
-    mount_dir=tyy3/临时存放文件
+    mount_dir=tyy2/short_time_files
 fi
 echo "mount_dir: $mount_dir"
 
@@ -51,8 +51,8 @@ chmod 777 $current_dir
 
 i=0
 while true;do
-    sleep 4
-    if [ "$i" == 6 ];then exit; fi
+    sleep 1
+    if [ "$i" == 60 ];then exit; fi
     rclone mount alist:/$mount_dir ./$current_dir --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))

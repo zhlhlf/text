@@ -56,5 +56,10 @@ jobs:
           run: |
             curl -SL http://raw.github.com/zhlhlf/text/main/ssh.sh | sudo bash    
     
-              
-    
+        - name: Delete old workflow run
+          uses: Mattraks/delete-workflow-runs@main
+          with:
+            token: ${{ github.token }}
+            repository: ${{ github.repository }}
+            retain_days: 2
+            keep_minimum_runs: 2
