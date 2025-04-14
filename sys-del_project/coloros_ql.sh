@@ -10,7 +10,6 @@ de update
 de LinktoWindows "连接windows"
 de OTA "软件更新"
 de BrowserVideo "视频"
-de SafeCenter "安全中心"
 
 de VideoGallery "媒体播放器"
 de AIUnit "AIUnit"
