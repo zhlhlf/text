@@ -1,31 +1,6 @@
-de(){
- oo=$(find */*app*/* -iname $1  -maxdepth 0)
- if [ "$oo" == "" ];then
-   oo=$(find */*/*app*/* -iname $1  -maxdepth 0)
- fi
- if [ "$oo" != "" ];then
-  echo "删除--- $oo \"$2\"" >> ../../../del_app-by-zhlhlf.txt
-  echo "删除--- $oo \"$2\""
-  rm -rf $oo
- fi
-}
-
-del_key(){
-   for i in "vendor/etc/fstab.qcom" "boot/ramdisk/fstab.qcom" "boot/ramdisk/oplus.fstab" "boot/ramdisk/system/etc/fstab.qcom" 
-   do
-    if [ ! -f $i ];then
-        continue
-    fi
-    echo "edit  $i ... "
-    sed -i s#avb.*system,#""#g "$i"
-    sed -i s#avb.*vendor,#""#g "$i"
-    sed -i s#,fileencryption.*metadata_encryption#""#g "$i"
-    sed -i s#,avb_keys.*pubkey#""#g "$i"
-   done
-}
 
 
-del_key #去除data加密 avb验证等
+
 
 echo "ro.setupwizard.mode=DISABLED" >> system/system/build.prop #跳过谷歌向导
 #rm -rf $(find ./ -name "SetupWizard") #删除后下拉 全面屏返回等出问题
