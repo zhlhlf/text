@@ -42,7 +42,7 @@ rm -r alist_data.zip
 cp -r rclone.conf ~/.config/rclone/rclone.conf
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 chmod 777 * -R
-nohup ./alist server >>/dev/null 2>&1 &
+./alist server > a.log 2>&1 &
 cd ..
 umount $current_dir > /dev/null 2>&1
 rm -rf $current_dir
@@ -52,7 +52,10 @@ chmod 777 $current_dir
 i=0
 while true;do
     sleep 1
-    if [ "$i" == 60 ];then exit; fi
+    if [ "$i" == 60 ];then 
+       cat alist/a.log
+       exit 1
+    fi
     rclone mount alist:/$mount_dir ./$current_dir --umask 000 --daemon >/dev/null 2>&1
     if [ "`df -h $current_dir | grep alist`" ];then break; fi
     i=$((i+1))
