@@ -41,8 +41,6 @@ mkdir alist && cd alist
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist_back_restore.py
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rclone.conf
-wget -q $alist_data -O alist_data.zip
-unzip -qo alist_data.zip || (echo "pass fail" ; exit)
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 chmod 777 * -R
 ./alist server > a.log 2>&1 &
@@ -54,7 +52,7 @@ cd ..
 
 mount_A_B $A $A2
 
-mount_A_B $B $B1
+mount_A_B $B $B2
 
 count=$(nproc --all)
 asd(){
