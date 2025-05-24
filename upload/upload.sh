@@ -51,10 +51,10 @@ wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/ali
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rclone.conf
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 chmod 777 * -R
+./alist server > a.log 2>&1 &
 pip install tabulate httpx >> null
 python3 alist_back_restore.py --host $a_host --username $a_username --password $a_password
 python3 alist_back_restore.py
-./alist server > a.log 2>&1 &
 
 cd ..
 umount $current_dir > /dev/null 2>&1
