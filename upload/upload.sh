@@ -38,7 +38,7 @@ mount_A_B() {
             exit 1
         fi
         rclone mount alist:/$1 ./$2 --umask 000 --daemon >/dev/null 2>&1
-        if [ "$(df -h $1 | grep alist)" ]; then break; fi
+        if [ "$(df -h $2 | grep alist)" ]; then break; fi
         i=$((i + 1))
     done
     echo "mount $1 succeeded"
