@@ -30,6 +30,7 @@ fi
 alist_data="$data_host/getAlistDataZip?key=$pass"
 
 mount_A_B() {
+    echo "start mount $1 to $2"
     i=0
     while true; do
         sleep 1
@@ -37,7 +38,7 @@ mount_A_B() {
             cat alist/a.log
             exit 1
         fi
-        rclone mount alist:/$1 ./$2 --umask 000 --daemon >/dev/null 2>&1
+        rclone mount alist:/$1 ./$2 --umask 000 --daemon --config ./alist/rclone.conf  >/dev/null 2>&1
         if [ "$(df -h $2 | grep alist)" ]; then break; fi
         i=$((i + 1))
     done
@@ -49,6 +50,8 @@ mkdir alist && cd alist
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist_back_restore.py
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rclone.conf
+wget -q $alist_data -O alist_data.zip
+unzip -qo alist_data.zip || (echo "pass fail" ; exit)
 kill -8 $(ps -A | grep alist | awk -F' ' '{print $1}') >/dev/null 2>&1
 chmod 777 * -R
 ./alist server >a.log 2>&1 &
