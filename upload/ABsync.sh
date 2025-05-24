@@ -67,7 +67,7 @@ asd &
 pid=$!
 echo "start sync"
 echo
-rclone copy $A2 $B2 -P --transfers=$count > a.log && kill -8 $pid
+rclone copy $A2 $B2 -P --transfers=$count --config ./alist/rclone.conf > a.log && kill -8 $pid
 echo
 
 kill -8 `ps -A | grep alist | awk -F' ' '{print $1}'` >/dev/null 2>&1
