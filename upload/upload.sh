@@ -1,12 +1,13 @@
 #!/bin/sh
 
-#1 密码
+#1 key
 #2 挂载路径
 #3 需要上传的目录
 #4 暂时使用的目录 一般无需更改
 
-pass="$1"
-data_host="http://119.8.42.151:29155"
+a_host=`echo $1 | awk -F' ' '{print $1}'`
+a_username=`echo $1 | awk -F' ' '{print $2}'`
+a_password=`echo $1 | awk -F' ' '{print $3}'`
 
 if [ "$2" ]; then
     mount_dir=$2
@@ -26,8 +27,6 @@ if [ "$4" ]; then
 else
     current_dir=zhlhlf
 fi
-
-alist_data="$data_host/getAlistDataZip?key=$pass"
 
 mount_A_B() {
     echo "start mount $1 to $2"
@@ -50,13 +49,14 @@ mkdir alist && cd alist
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/alist_back_restore.py
 wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rclone.conf
-wget -q $alist_data -O alist_data.zip
+
 unzip -qo alist_data.zip || (echo "pass fail" ; exit)
 kill -8 $(ps -A | grep alist | awk -F' ' '{print $1}') >/dev/null 2>&1
 chmod 777 * -R
 ./alist server >a.log 2>&1 &
 pip install tabulate httpx >>null
-python3 alist_back_restore.py --set_admin true
+python3 alist_back_restore.py --host $a_host --username $a_username --password $a_password
+python3 alist_back_restore.py
 
 cd ..
 umount $current_dir >/dev/null 2>&1
