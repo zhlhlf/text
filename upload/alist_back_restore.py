@@ -196,7 +196,6 @@ def main():
     parser.add_argument('--host', help='Alist服务器地址（示例：http://127.0.0.1:5244）')
     parser.add_argument('--username', help='管理员用户名')
     parser.add_argument('--password', help='管理员密码')
-    parser.add_argument('--set_admin', help='给管理员用户所有权限')
     args = parser.parse_args()
     
     # 检测备份参数
@@ -207,11 +206,6 @@ def main():
             username=args.username,
             password=args.password
         )
-    elif all([args.set_admin]):
-        print("设置管理员权限")
-        reset_password(DEFAULT_PASSWORD)
-        token = login(DEFAULT_ALIST_URL, DEFAULT_USERNAME, DEFAULT_PASSWORD)
-        update_admin_user(token, DEFAULT_ALIST_URL, DEFAULT_USERNAME)
     else:
         print("进入恢复模式（使用本地配置）")
         restore_data(
