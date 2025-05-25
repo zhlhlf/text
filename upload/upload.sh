@@ -76,6 +76,7 @@ asd(){
 pid=$!
 
 echo "==============upload-list==============="
+echo -e "all_size: $(du -h $in_dir | awk '{print $1}' ) \n\n"
 du -h $in_dir/*
 echo
 echo "start sync"
