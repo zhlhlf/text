@@ -159,32 +159,17 @@ def restore_data(host, username, password):
             if add_storage(token, host, storage_data, verbose=False):
                 restored_storages.append(storage_data['mount_path'])
         
-        # 恢复用户
-        restored_users = []
-        for user in data.get("users", []):
-            user_data = {k: user[k] for k in [
-                "username", "password", "role", "permission", "base_path",
-                "disabled"
-            ]}
-            if add_user(token, host, user_data, verbose=False):
-                restored_users.append(user_data['username'])
-        
         # 显示汇总结果
         print("\n恢复结果汇总:")
         if restored_storages:
-            print(f"成功恢复存储({len(restored_storages)}个):", " ".join(restored_storages))
+            print(f"成功恢复存储({len(restored_storages)}个):")
         else:
             print("没有存储被恢复")
             
-        if restored_users:
-            print(f"成功恢复用户({len(restored_users)}个):", " ".join(restored_users))
-        else:
-            print("没有用户被恢复")
         
         # 更新管理员账户
         update_admin_user(token, host, username)
         
-        print("\n恢复操作完成")
         return True
     except Exception as e:
         print(f"恢复失败: {str(e)}")
