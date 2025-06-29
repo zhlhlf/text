@@ -73,12 +73,16 @@ if [[ -n "${TELEGRAM_BOT_TOKEN}" && -n "${TELEGRAM_CHAT_ID}" ]]; then
     fi
 fi
 
-while [[ -S ${TMATE_SOCK} ]]; do
+log(){
     echo "-----------------------------------------------------------------------------------"
     echo -e "CLI: ${Green_font_prefix}${TMATE_SSH}${Font_color_suffix}"
     echo -e "URL: ${Green_font_prefix}${TMATE_WEB}${Font_color_suffix}"
-    echo "-----------------------------------------------------------------------------------"        
-    sleep 5
+    echo "-----------------------------------------------------------------------------------"     
+}
+log
+while [[ -S ${TMATE_SOCK} ]]; do
+    # log
+    sleep 8
     if [[ -e ${CONTINUE_FILE} ]]; then
         echo -e "${INFO} Continue to the next step."
         exit 0
