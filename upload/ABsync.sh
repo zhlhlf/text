@@ -67,7 +67,7 @@ asd &
 pid=$!
 echo "start sync"
 echo
-rclone copy $A2 $B2 -P --transfers=$count --config ./openlist/rclone.conf > a.log && kill -8 $pid
+rclone copy $A2 $B2 -P --transfers=$count --size-only --config ./openlist/rclone.conf > a.log && kill -8 $pid
 echo
 
 kill -8 `ps -A | grep openlist | awk -F' ' '{print $1}'` >/dev/null 2>&1
