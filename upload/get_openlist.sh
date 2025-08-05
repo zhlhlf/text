@@ -13,7 +13,7 @@ fi
 rm -rf openlist
 
 # 下载文件
-wget -q "$DOWNLOAD_FILE" -O openlist
+wget -q "$DOWNLOAD_URL" -O openlist
 
 chmod 777 openlist
 
