@@ -12,7 +12,7 @@ a_password=`echo $1 | awk -F' ' '{print $3}'`
 if [ "$2" ];then
     mount_dir=$2
 else
-    mount_dir=tyy2/short_time_files
+    mount_dir=tyy/short_time_files
 fi
 echo "mount_dir: $mount_dir"
 
