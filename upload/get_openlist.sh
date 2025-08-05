@@ -9,8 +9,11 @@ if [ -z "$DOWNLOAD_URL" ]; then
     DOWNLOAD_URL="https://github.com/zhlhlf/OpenList/releases/download/openlist_425fed6/OpenList-linux-musl-amd64"
 fi
 
+# 删除openlist
+rm -rf openlist
+
 # 下载文件
-curl -sL -o "$DOWNLOAD_FILE" openlist
+wget -q "$DOWNLOAD_FILE" -O openlist
 
 if [ $? -ne 0 ]; then
     echo "下载文件失败。"
