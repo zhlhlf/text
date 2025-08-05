@@ -15,6 +15,8 @@ rm -rf openlist
 # 下载文件
 wget -q "$DOWNLOAD_FILE" -O openlist
 
+chmod 777 openlist
+
 if [ $? -ne 0 ]; then
     echo "下载文件失败。"
     exit 1
