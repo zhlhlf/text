@@ -81,7 +81,7 @@ du -h $in_dir/*
 echo
 echo "start sync"
 echo
-rclone copy $in_dir $current_dir -P --transfers=$count --size-only --config ./openlist/rclone.conf > a.log && kill -8 $pid || ( cat openlist/a.log && cat a.log )
+rclone copy $in_dir $current_dir -P --transfers=16 --size-only --config ./openlist/rclone.conf > a.log && kill -8 $pid || ( cat openlist/a.log && cat a.log )
 echo
 echo "mount_dir: $mount_dir"
 echo
