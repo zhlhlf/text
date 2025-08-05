@@ -50,10 +50,6 @@ python3 openlist_back_restore.py
 
 cd ..
 
-mount_A_B $A $A2
-
-mount_A_B $B $B2
-
 count=$(nproc --all)
 asd(){
     while true;do
@@ -67,7 +63,7 @@ asd &
 pid=$!
 echo "start sync"
 echo
-rclone copy $A2 $B2 -P --transfers=$count --size-only --config ./openlist/rclone.conf > a.log && kill -8 $pid
+rclone copy $A $B -P --transfers=16 --size-only --config ./openlist/rclone.conf > a.log && kill -8 $pid
 echo
 
 kill -8 `ps -A | grep openlist | awk -F' ' '{print $1}'` >/dev/null 2>&1
