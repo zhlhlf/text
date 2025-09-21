@@ -27,7 +27,11 @@ cd ..
 
 echo "start sync"
 echo
-rclone copy "openlist:/$A" "openlist:/$B" -P --transfers=16 --size-only --config ./openlist/rclone.conf && kill -8 $pid
+if [ "$4" = "1" ];then
+    rclone move "openlist:/$A" "openlist:/$B" -P --transfers=$(nproc) --size-only --config ./openlist/rclone.conf && kill -8 $pid
+else
+    rclone copy "openlist:/$A" "openlist:/$B" -P --transfers=$(nproc)  --size-only --config ./openlist/rclone.conf && kill -8 $pid
+fi
 echo
 
 kill -8 `ps -A | grep openlist | awk -F' ' '{print $1}'` >/dev/null 2>&1
