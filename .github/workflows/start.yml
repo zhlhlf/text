@@ -47,7 +47,6 @@ jobs:
               
         - name: 操作
           run: |  
-              RCK="${{ secrets.RCK }}"
               mkdir 666
               ${{ github.event.inputs.shell }}
               
