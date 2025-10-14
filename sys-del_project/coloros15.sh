@@ -13,6 +13,7 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp"   #删除所有*/*
 #de OpenID "云网络" #控制云服务网络 删掉会出现没网
 # de HeyTapSpeechAssist "小布助手"
 # de GmsCore "谷歌服务"
+# de GoogleServicesFramework "谷歌服务框架" #国产某宝 gms依赖没有打不开
 # de OVoiceManagerService*  "语音唤醒 "
 # de ColorAccessibilityAssistant "语音转文字"
 
@@ -76,7 +77,6 @@ de SupertextInput "扫描输入"
 de UMS "服务治理框架"
 de SOSHelper "SOS紧急联络"
 de PhoneManager "手机管家"
-de GoogleServicesFramework "谷歌服务框架"
 de GooglePlayServicesUpdater ""
 de olc ""
 de PostmanService "诊断工具服务"
@@ -114,3 +114,6 @@ de Stk
 de UXDesign
 de BasicDreams
 de DFS
+
+# rm
+rm -rf */opex
