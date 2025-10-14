@@ -16,6 +16,8 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp"   #删除所有*/*
 # de GoogleServicesFramework "谷歌服务框架" #国产某宝 gms依赖没有打不开
 # de OVoiceManagerService*  "语音唤醒 "
 # de ColorAccessibilityAssistant "语音转文字"
+# de UMS "服务治理框架" # 流体云服务
+
 
 de KeKeMarket "软件商店" #配置云服务恢复应用快速
 de MSPService "移动服务"
@@ -74,7 +76,6 @@ de SwitchAccess "google开关控制"
 de HealthService "健康数据平台"
 de DigitalWellBeing "数字健康"
 de SupertextInput "扫描输入"
-de UMS "服务治理框架"
 de SOSHelper "SOS紧急联络"
 de PhoneManager "手机管家"
 de GooglePlayServicesUpdater ""
