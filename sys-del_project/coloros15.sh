@@ -4,12 +4,10 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp"   #删除所有*/*
 #de *AccessoryFramework "设备快连"
 #de CarLink ""
 #de OCar "车联"
-#de OShare "一加互传"
 #de Calendar "日历"
 #de CalendarProvider "日历储存"
 #de CloudService "云服务 "
 #de FindMyPhone* "查找手机 "
-#de *WeatherService "天气服务"
 #de OpenID "云网络" #控制云服务网络 删掉会出现没网
 # de HeyTapSpeechAssist "小布助手"
 # de GmsCore "谷歌服务"
@@ -17,6 +15,9 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp"   #删除所有*/*
 # de OVoiceManagerService*  "语音唤醒 "
 # de ColorAccessibilityAssistant "语音转文字"
 # de UMS "服务治理框架" # 流体云服务
+# de talkback* "谷歌无障碍套件"
+# de SwitchAccess "google开关控制"
+# de GooglePlayServicesUpdater "Google Play Services Updater"
 
 
 de KeKeMarket "软件商店" #配置云服务恢复应用快速
@@ -70,20 +71,19 @@ de TasWallet "系统卡包"
 de OWork "随身工作台"
 de TravelEngine "智慧出行"
 de AssistantScreen "速览"
-de talkback* "安卓无障碍套件"
 de SceneService "数据服务平台"
-de SwitchAccess "google开关控制"
 de HealthService "健康数据平台"
 de DigitalWellBeing "数字健康"
 de SupertextInput "扫描输入"
 de SOSHelper "SOS紧急联络"
 de PhoneManager "手机管家"
-de GooglePlayServicesUpdater ""
 de olc ""
 de PostmanService "诊断工具服务"
 de LogKit "反馈工具箱"
 de *EngineerMode "工程模式"
-
+de *WeatherService "天气服务"
+de OShare "一加互传"
+de RemoteControl "远程控制"
 
 # 2025-4-18
 de Colorx
