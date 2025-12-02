@@ -28,9 +28,9 @@ cd ..
 echo "start sync"
 echo
 if [ "$4" = "1" ];then
-    rclone move "openlist:/$A" "openlist:/$B" -P --transfers=$(nproc) --size-only --config ./openlist/rclone.conf
+    rclone move "openlist:/$A" "openlist:/$B" -P --transfers=16 --size-only --config ./openlist/rclone.conf
 else
-    rclone copy "openlist:/$A" "openlist:/$B" -P --transfers=$(nproc) --size-only --config ./openlist/rclone.conf
+    rclone copy "openlist:/$A" "openlist:/$B" -P --transfers=16 --size-only --config ./openlist/rclone.conf
 fi
 echo
 
