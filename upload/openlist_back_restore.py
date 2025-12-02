@@ -57,25 +57,6 @@ def get_storage_list(token, host):
     except requests.exceptions.RequestException as e:
         raise Exception(f"获取存储列表失败: {str(e)}")
 
-# 用户管理功能
-def add_user(token, host, user_data, verbose=True):
-    """添加用户"""
-    url = f"{host}/api/admin/user/create"
-    try:
-        response = requests.post(
-            url,
-            headers={"Authorization": token, "Content-Type": "application/json"},
-            json=user_data
-        )
-        response.raise_for_status()
-        if verbose:
-            print(f"用户添加成功：{user_data['username']}")
-        return True
-    except requests.exceptions.RequestException as e:
-        if verbose:
-            print(f"用户添加失败 [{user_data['username']}]: {str(e)}")
-        return False
-
 def get_user_list(token, host):
     """获取用户列表"""
     url = f"{host}/api/admin/user/list"
@@ -153,7 +134,7 @@ def restore_data(host, username, password):
                 "order_direction", "extract_folder", "web_proxy", "webdav_policy",
                 "proxy_range", "down_proxy_url"
             ]}
-            if add_storage(token, host, storage_data, verbose=False):
+            if add_storage(token, host, storage_data, verbose=True):
                 restored_storages.append(storage_data['mount_path'])
         
         # 显示汇总结果
@@ -161,7 +142,6 @@ def restore_data(host, username, password):
             print(f"成功恢复存储({len(restored_storages)}个)")
         else:
             print("没有存储被恢复")
-            
         
         # 更新管理员账户
         update_admin_user(token, host, username)
