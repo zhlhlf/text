@@ -154,9 +154,13 @@ def restore_data(host, username, password):
 def main():
     # 命令行参数解析
     parser = argparse.ArgumentParser(description='OpenList备份恢复工具')
-    parser.add_argument('--host', help='OpenList服务器地址（示例：http://127.0.0.1:5244）')
-    parser.add_argument('--username', help='管理员用户名')
-    parser.add_argument('--password', help='管理员密码')
+    # 支持位置参数（优先），同时保留旧的 --host/--username/--password 以兼容历史用法
+    parser.add_argument('host', nargs='?', help='OpenList服务器地址（示例：http://127.0.0.1:5244）')
+    parser.add_argument('username', nargs='?', help='管理员用户名')
+    parser.add_argument('password', nargs='?', help='管理员密码')
+    parser.add_argument('--host', dest='host', help='兼容：OpenList服务器地址（示例：http://127.0.0.1:5244）')
+    parser.add_argument('--username', dest='username', help='兼容：管理员用户名')
+    parser.add_argument('--password', dest='password', help='兼容：管理员密码')
     args = parser.parse_args()
     
     # 检测备份参数

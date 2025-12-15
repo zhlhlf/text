@@ -20,7 +20,7 @@ kill -8 `ps -A | grep openlist | awk -F' ' '{print $1}'` >/dev/null 2>&1
 chmod 777 * -R
 ./openlist server > a.log 2>&1 &
 pip install httpx >> null
-python3 openlist_back_restore.py --host $a_host --username $a_username --password $a_password
+python3 openlist_back_restore.py $a_host $a_username $a_password
 python3 openlist_back_restore.py
 
 cd ..
