@@ -28,7 +28,7 @@ wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rcl
 pkill openlist
 wait
 chmod 777 * -R
-./openlist server 2>&1 &
+./openlist server > /dev/null 2>&1 &
 python3 openlist_back_restore.py $a_host $a_username $a_password
 python3 openlist_back_restore.py
 cd ..
