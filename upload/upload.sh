@@ -29,18 +29,21 @@ fi
 
 rm -rf local_file_list_sorted.txt current_file_list_sorted.txt openlist
 
-command rclone >>/dev/null 2>&1 || curl -s https://rclone.org/install.sh | sudo bash > /dev/null 2>&1 &
-mkdir -p openlist && cd openlist
-curl -sL https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/get_openlist.sh | bash
-wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/openlist_back_restore.py
-wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rclone.conf
-chmod 777 * -R
-python3 openlist_back_restore.py $a_host $a_username $a_password
+command rclone >>/dev/null 2>&1 || curl -s https://rclone.org/install.sh | sudo bash > /dev/null 2>&1
+pip install httpx >> null &
+rm -rf openlist
+mkdir openlist && cd openlist
+curl -sL https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/get_openlist.sh | bash &
+wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/openlist_back_restore.py &
+wget -q https://raw.githubusercontent.com/zhlhlf/text/refs/heads/main/upload/rclone.conf &
+pkill openlist
 wait
-./openlist server &
-pip install httpx >> null
+chmod 777 * -R
+./openlist server 2>&1 &
+python3 openlist_back_restore.py $a_host $a_username $a_password
 python3 openlist_back_restore.py
 cd ..
+    
 
 echo "==============upload-list==============="
 echo -e "all_size: $(du -h $in_dir | awk '{print $1}' ) \n\n"
