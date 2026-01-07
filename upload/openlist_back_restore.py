@@ -11,12 +11,29 @@ DEFAULT_USERNAME = "admin"
 DEFAULT_PASSWORD = "123456"
 
 def reset_password(password):
-    """重置本地OpenList管理员密码"""
-    try:
-        subprocess.check_call(["./openlist", "admin", "set", password])
-        print(f"密码重置成功：{password}")
-    except Exception as e:
-        print(f"密码重置失败: {e}")
+    """调用 openlist CLI 重置管理员密码，返回是否成功"""
+    commands = [
+        ["./openlist", "admin", "set", password],
+        ["openlist", "admin", "set", password],
+    ]
+
+    for cmd in commands:
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True)
+        except FileNotFoundError:
+            continue
+        except Exception as e:
+            print(f"密码重置失败（{cmd[0]} 未执行）: {e}")
+            continue
+
+        if result.returncode == 0:
+            return True
+
+        error_output = result.stderr.strip() or result.stdout.strip() or "未知错误"
+        print(f"密码重置失败（{cmd[0]} 返回码 {result.returncode}）: {error_output}")
+
+    print("密码重置失败：未找到可用的 openlist 命令或命令执行失败")
+    return False
 
 def login(host, username, password):
     """登录获取访问令牌"""
@@ -134,7 +151,7 @@ def restore_data(host, username, password):
                 "order_direction", "extract_folder", "web_proxy", "webdav_policy",
                 "proxy_range", "down_proxy_url"
             ]}
-            if add_storage(token, host, storage_data, verbose=True):
+            if add_storage(token, host, storage_data, verbose=False):
                 restored_storages.append(storage_data['mount_path'])
         
         # 显示汇总结果
