@@ -36,7 +36,7 @@ cd ..
 
 echo "start sync"
 echo
-if [ "$4" = "1" ];then
+if [ "$5" = "1" ];then
     rclone move "openlist:/$A" "openlist:/$B" -P --transfers=$transfers --size-only --config ./openlist/rclone.conf
 else
     rclone copy "openlist:/$A" "openlist:/$B" -P --transfers=$transfers --size-only --config ./openlist/rclone.conf
