@@ -19,7 +19,7 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp"   #删除所有*/*
 # de SwitchAccess "google开关控制"
 # de GooglePlayServicesUpdater "Google Play Services Updater"
 # de *EngineerMode "工程模式"
-
+# de SmartSideBar "智能侧边栏"
 
 de KeKeMarket "软件商店" #配置云服务恢复应用快速
 de MSPService "移动服务"
@@ -96,7 +96,6 @@ de OplusPhoneActivation
 de OplusSecurityKeyboard
 de SecurityGuard
 de SmartLock
-de SmartSideBar
 de CodeBook
 de ColorfulEngine
 de Cota
