@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 2秒内访问谷歌，失败则使用代理
-timeout 2 curl -s -I "https://www.google.com" > /dev/null 2>&1 || PROXY="https://ghfast.top/"
+timeout 2 curl -s -I "https://www.google.com" > /dev/null 2>&1 || (PROXY="https://ghfast.top/" && echo "使用代理 $PROXY 加速下载...")
 
 # 获取处理器架构
 ARCH=$(uname -m | sed 's/x86_64/amd64/; s/aarch64/arm64/')
