@@ -1,6 +1,7 @@
 
 
-keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp"   #删除所有*/*del-app*/*  apps为要保留的
+## 时钟 文件管理 主题商店 红外遥控应用 银联可信组件
+keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService"   #删除所有*/*del-app*/*  apps为要保留的
 
 de KeKeMarket "软件商店"
 de OTA "软件更新"
