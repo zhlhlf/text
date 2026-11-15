@@ -95,6 +95,10 @@ de AIWriter 小布记忆
 de AccessoryFramework 设备快连
 de AICallAssistant "AI 通话助手"
 de AONService "隔空手势服务"
+de AIMemory "小布记忆"
+de CarLink
+
+
 
 # rm
 rm -rf */opex
