@@ -1,5 +1,6 @@
-## 时钟 文件管理 主题商店 红外遥控应用 银联可信组件
-keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService"   #删除所有*/*del-app*/*  apps为要保留的
+## 时钟 文件管理 主题商店 红外遥控应用 银联可信组件 钱包
+keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService FinShellWallet"   #删除所有*/*del-app*/*  apps为要保留的
+
 #de Aod "息屏显示"
 #de BaiduInput* "百度输入"
 #de *AccessoryFramework "设备快连"
@@ -21,6 +22,7 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService"   #�
 # de GooglePlayServicesUpdater "Google Play Services Updater"
 # de *EngineerMode "工程模式"
 # de SmartSideBar "智能侧边栏"
+# de TasWallet "系统卡包"
 
 de KeKeMarket "软件商店" #配置云服务恢复应用快速
 de MSPService "移动服务"
@@ -69,7 +71,6 @@ de WallpaperChooser "动态壁纸选择器"
 de *TranslationService "翻译服务"
 de KeKePay "安全支付"
 de SecurePay "安全支付"
-de TasWallet "系统卡包"
 de OWork "随身工作台"
 de TravelEngine "智慧出行"
 de AssistantScreen "速览"
