@@ -5,7 +5,7 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService FinShe
 
 
 # de MSPService "移动服务" 
-de SmartSideBar "智能侧边栏"
+# de SmartSideBar "智能侧边栏"
 
 
 de KeKeMarket "软件商店" #配置云服务恢复应用快速
@@ -94,6 +94,7 @@ de Ocar "Car+ 车联"
 de AIWriter 小布记忆
 de AccessoryFramework 设备快连
 de AICallAssistant "AI 通话助手"
+de AONService "隔空手势服务"
 
 # rm
 rm -rf */opex
