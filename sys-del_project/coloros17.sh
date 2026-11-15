@@ -70,6 +70,30 @@ de *WeatherService "天气服务"
 de OShare "一加互传"
 de RemoteControl "远程控制"
 
+# 20261115
+de CTAutoRegist "电信运营商监控服务"
+de HealthConnectController* "健康数据共享"
+de VmTerminalApp "垃圾终端"
+de AdServicesApk "狗屁广告隐私应用"
+de LogTrialCommercial "垃圾系统公测"
+de CalendarProvider "日历存储"
+de VDCService "外设融合框架"
+de DeepThinker "智慧服务能力"
+de Matrix "意图执行框架"
+de Ohome 智慧生活
+de *PhoneActivation "电子保卡"
+de StdSP
+de Karaoke 耳机返听
+de Gleaner 智慧数据感知
+de ColorAccessibilityAssistant "AI 语音摘记"
+de CardService 智慧服务框架
+de BeaconLink 无网畅聊
+de BaseOcrScanner "AI 扫一扫服务"
+de MyDevices 设备空间
+de Ocar "Car+ 车联"
+de AIWriter 小布记忆
+de AccessoryFramework 设备快连
+de AICallAssistant "AI 通话助手"
 
 # rm
 rm -rf */opex
