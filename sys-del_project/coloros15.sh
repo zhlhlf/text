@@ -1,13 +1,13 @@
 ## 时钟 文件管理 主题商店 红外遥控应用 银联可信组件 钱包
 keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService FinShellWallet"   #删除所有*/*del-app*/*  apps为要保留的
 
-#de Aod "息屏显示"
-#de BaiduInput* "百度输入"
+de Aod "息屏显示"
+de BaiduInput* "百度输入"
 #de *AccessoryFramework "设备快连"
-#de CarLink ""
-#de OCar "车联"
-#de Calendar "日历"
-#de CalendarProvider "日历储存"
+de CarLink ""
+de OCar "车联"
+de Calendar "日历"
+de CalendarProvider "日历储存"
 #de CloudService "云服务 "
 #de FindMyPhone* "查找手机 "
 #de OpenID "云网络" #控制云服务网络 删掉会出现没网
@@ -15,7 +15,7 @@ keep-del-app "Clock FileManager KeKeThemeSpace ConsumerIRApp UPTsmService FinShe
 # de GmsCore "谷歌服务"
 # de GoogleServicesFramework "谷歌服务框架" #国产某宝 gms依赖没有打不开
 # de OVoiceManagerService*  "语音唤醒 "
-# de ColorAccessibilityAssistant "语音转文字"
+de ColorAccessibilityAssistant "语音转文字"
 # de UMS "服务治理框架" # 流体云服务
 # de talkback* "谷歌无障碍套件"
 # de SwitchAccess "google开关控制"
